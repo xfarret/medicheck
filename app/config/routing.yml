@@ -1,0 +1,5 @@
+medicheck_user:
+    resource: "@MedicheckUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
