@@ -11,6 +11,7 @@ namespace Medicheck\UserBundle\Entity;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
+use Medicheck\UserBundle\Exception\RoleNotFoundException;
 
 class RoleRepository extends EntityRepository {
 
@@ -46,7 +47,7 @@ class RoleRepository extends EntityRepository {
             // s'il n'y a pas d'entrée correspondante aux critères
             $role = $q->getSingleResult();
         } catch (NoResultException $e) {
-            throw new \Exception(
+            throw new RoleNotFoundException(
                 sprintf('Unable to find MedicheckUserBundle:Role object identified by "%s".', $value),
                 0, $e
             );
