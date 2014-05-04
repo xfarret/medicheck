@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Medicheck" uuid="bcda170c-b50b-48f2-abba-3a8d42c84bb3">
+    <database-info product="MySQL" version="5.5.37-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="medicheck"/>
+    <table name="Role" schema="" catalog="medicheck" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" length="20" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_2DE8C6A3D60322AC" table="user_role" schema="" catalog="medicheck" columns="role_id"/>
+      <index name="UNIQ_F75B255457698A6A" unique="true" columns="role"/>
+    </table>
+    <table name="User" schema="" catalog="medicheck" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="related_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="num_secu" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" length="25" precision="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" length="25" precision="0" nullable="false" jdbcType="12"/>
+      <column name="salt" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="60" precision="0" nullable="false" jdbcType="12"/>
+      <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="locked" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="is_child" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_2DA179774162C001" columns="related_id" ref-table="User" ref-schema="" ref-catalog="medicheck" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_2DA179774162C001" table="User" schema="" catalog="medicheck" columns="related_id"/>
+      <exported-key name="FK_2DE8C6A3A76ED395" table="user_role" schema="" catalog="medicheck" columns="user_id"/>
+      <index name="UNIQ_2DA1797749136D9C" unique="true" columns="num_secu"/>
+      <index name="UNIQ_2DA17977E7927C74" unique="true" columns="email"/>
+      <index name="IDX_2DA179774162C001" unique="false" columns="related_id"/>
+    </table>
+    <table name="user_role" schema="" catalog="medicheck" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="role_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,role_id"/>
+      <foreign-key name="FK_2DE8C6A3D60322AC" columns="role_id" ref-table="Role" ref-schema="" ref-catalog="medicheck" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_2DE8C6A3A76ED395" columns="user_id" ref-table="User" ref-schema="" ref-catalog="medicheck" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_2DE8C6A3A76ED395" unique="false" columns="user_id"/>
+      <index name="IDX_2DE8C6A3D60322AC" unique="false" columns="role_id"/>
+    </table>
+  </data-source>
+</component>

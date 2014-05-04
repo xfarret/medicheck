@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9c3d3a-3d48-416e-83c9-a92355a9c395" name="Default" comment="ajout du CoreBundle&#10;MAJ des colonnes User&#10;MAJ des repositories UserBundle">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" />
+    <list default="true" id="5c9c3d3a-3d48-416e-83c9-a92355a9c395" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="medicheck.iws" />
@@ -35,7 +28,7 @@
       <file leaf-file-name="RoleRepository.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="23" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.40983605" vertical-offset="599" max-vertical-offset="1026">
+            <state line="48" column="23" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.9789227" vertical-offset="356" max-vertical-offset="1026">
               <folding>
                 <element signature="e#128#159#0" expanded="true" />
               </folding>
@@ -373,15 +366,19 @@
       <created>1399227053326</created>
       <updated>1399227053326</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajout du CoreBundle&#10;MAJ des colonnes User&#10;MAJ des repositories UserBundle">
+      <created>1399229581147</created>
+      <updated>1399229581147</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1282" height="873" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -549,7 +546,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="23" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.40983605" vertical-offset="599" max-vertical-offset="1026">
+        <state line="48" column="23" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.9789227" vertical-offset="356" max-vertical-offset="1026">
           <folding>
             <element signature="e#128#159#0" expanded="true" />
           </folding>
