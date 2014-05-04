@@ -4,34 +4,28 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="medicheck_user.example.class">Medicheck\UserBundle\Example</parameter>
+        <parameter key="medicheck.repository.user.class">Medicheck\UserBundle\Entity\UserRepository</parameter>
+        <parameter key="medicheck.repository.group.class">Medicheck\UserBundle\Entity\GroupRepository</parameter>
+        <parameter key="medicheck.manager.user.class">Medicheck\UserBundle\Manager\UserManager</parameter>
     </parameters>
 
     <services>
-        <service id="medicheck_user.example" class="%medicheck_user.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="medicheck.repository.user" class="%medicheck.repository.user.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>MedicheckUserBundle:User</argument>
         </service>
-    </services>
-    -->
 
+        <service id="medicheck.repository.group" class="%medicheck.repository.group.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>MedicheckUserBundle:Role</argument>
+        </service>
 
-    <!-- parameters>
-        <parameter key="kolor.user_manager.class">Kolor\UserBundle\Model\UserManager</parameter>
-        <parameter key="kolor_user.factory.user.class">Kolor\UserBundle\Entity\UserFactory</parameter>
-    </parameters>
-
-    <services>
-        <service id="kolor_user.factory.user" class="%kolor_user.factory.user.class%" />
-
-        <service id="kolor.user_manager" class="%kolor.user_manager.class%">
+        <service id="medicheck.manager.user.class" class="%medicheck.manager.user.class%">
             <argument type="service" id="security.encoder_factory" />
-            <argument type="service" id="kolor_user.repository.user" />
+            <argument type="service" id="medicheck.repository.user" />
             <argument>%time_validity%</argument>
             <tag name="monolog.logger" channel="kolor.user" />
         </service>
-    </services -->
+    </services>
 </container>
