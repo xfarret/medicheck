@@ -17,4 +17,21 @@
         </service>
     </services>
     -->
+
+
+    <!-- parameters>
+        <parameter key="kolor.user_manager.class">Kolor\UserBundle\Model\UserManager</parameter>
+        <parameter key="kolor_user.factory.user.class">Kolor\UserBundle\Entity\UserFactory</parameter>
+    </parameters>
+
+    <services>
+        <service id="kolor_user.factory.user" class="%kolor_user.factory.user.class%" />
+
+        <service id="kolor.user_manager" class="%kolor.user_manager.class%">
+            <argument type="service" id="security.encoder_factory" />
+            <argument type="service" id="kolor_user.repository.user" />
+            <argument>%time_validity%</argument>
+            <tag name="monolog.logger" channel="kolor.user" />
+        </service>
+    </services -->
 </container>

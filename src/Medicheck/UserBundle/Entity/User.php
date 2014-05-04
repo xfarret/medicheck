@@ -26,21 +26,36 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="num_secu", type="string", length=255, unique=true)
+     */
+    private $numSecu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=25)
      */
     private $firstname;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=25)
      */
     private $lastname;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=32)
      */
     private $salt;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=40)
      */
     private $password;
 
@@ -51,16 +66,22 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=60, unique=true)
      */
     private $email;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="locked", type="boolean")
      */
     private $locked;
 
@@ -70,14 +91,9 @@ class User implements AdvancedUserInterface, Serializable
     private $resettingPasswordToken;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="numSecu", type="string", length=255)
-     */
-    private $numSecu;
-
-    /**
      * @var boolean
+     *
+     * @ORM\Column(name="is_child", type="boolean")
      */
     private $isChild;
 
