@@ -165,6 +165,20 @@ class UserManager
     }
 
     /**
+     * Create empty active user
+     *
+     * @return User
+     */
+    public function createEmptyActiveUser()
+    {
+        $user = $this->createEmptyUser();
+        $user->setIsActive(true);
+        $user->setPasswordUnencoded(uniqid('pwd'));
+
+        return $user;
+    }
+
+    /**
      * @param integer   $token
      * @return boolean
      * @throws \InvalidArgumentException
