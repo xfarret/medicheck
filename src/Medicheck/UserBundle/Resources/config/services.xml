@@ -25,7 +25,7 @@
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="medicheck.repository.user" />
             <argument>%time_validity%</argument>
-            <tag name="monolog.logger" channel="kolor.user" />
+            <tag name="monolog.logger" channel="medicheck.user" />
         </service>
     </services>
 </container>

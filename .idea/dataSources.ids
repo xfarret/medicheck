@@ -7,6 +7,7 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="medicheck"/>
+    <schema name="" catalog="touronline"/>
     <table name="Role" schema="" catalog="medicheck" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
@@ -43,6 +44,169 @@
       <foreign-key name="FK_2DE8C6A3A76ED395" columns="user_id" ref-table="User" ref-schema="" ref-catalog="medicheck" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="IDX_2DE8C6A3A76ED395" unique="false" columns="user_id"/>
       <index name="IDX_2DE8C6A3D60322AC" unique="false" columns="role_id"/>
+    </table>
+    <table name="AccessToken" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="client_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="token" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="expires_at" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="scope" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_B39617F519EB6921" columns="client_id" ref-table="Client" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_B39617F5A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_B39617F55F37A13B" unique="true" columns="token"/>
+      <index name="IDX_B39617F519EB6921" unique="false" columns="client_id"/>
+      <index name="IDX_B39617F5A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="AuthCode" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="client_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="token" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="redirect_uri" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="expires_at" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="scope" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_F1D7D17719EB6921" columns="client_id" ref-table="Client" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_F1D7D177A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_F1D7D1775F37A13B" unique="true" columns="token"/>
+      <index name="IDX_F1D7D17719EB6921" unique="false" columns="client_id"/>
+      <index name="IDX_F1D7D177A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="Client" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="random_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="redirect_uris" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
+      <column name="secret" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="allowed_grant_types" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_B39617F519EB6921" table="AccessToken" schema="" catalog="touronline" columns="client_id"/>
+      <exported-key name="FK_F1D7D17719EB6921" table="AuthCode" schema="" catalog="touronline" columns="client_id"/>
+      <exported-key name="FK_7142379E19EB6921" table="RefreshToken" schema="" catalog="touronline" columns="client_id"/>
+    </table>
+    <table name="RefreshToken" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="client_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="token" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="expires_at" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="scope" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_7142379E19EB6921" columns="client_id" ref-table="Client" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_7142379EA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_7142379E5F37A13B" unique="true" columns="token"/>
+      <index name="IDX_7142379E19EB6921" unique="false" columns="client_id"/>
+      <index name="IDX_7142379EA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="encoder_job" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="video_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="profile_name" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="provider" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <column name="start_date" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="end_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="complete_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_DA2AD38D29C1004E" columns="video_id" ref-table="video" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_DA2AD38D29C1004E" unique="false" columns="video_id"/>
+    </table>
+    <table name="groups" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" length="20" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_8F02BF9DFE54D947" table="user_group" schema="" catalog="touronline" columns="group_id"/>
+      <index name="UNIQ_F06D397057698A6A" unique="true" columns="role"/>
+    </table>
+    <table name="localecontent" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" length="50" precision="0" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="lang" sqlType="VARCHAR" length="4" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_7F9C7F46F2D2BD3F" table="page_pagecontent" schema="" catalog="touronline" columns="pagecontent_id"/>
+    </table>
+    <table name="magic_linker" schema="" catalog="touronline" type="TABLE">
+      <column name="magic" sqlType="VARCHAR" length="13" precision="0" nullable="false" jdbcType="12"/>
+      <column name="client_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="magic"/>
+    </table>
+    <table name="monolog" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="channel" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="level_name" sqlType="VARCHAR" length="50" precision="0" nullable="true" jdbcType="12"/>
+      <column name="message" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="context" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="page" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="slug" sqlType="VARCHAR" length="50" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_7F9C7F46C4663E4" table="page_pagecontent" schema="" catalog="touronline" columns="page_id"/>
+    </table>
+    <table name="page_pagecontent" schema="" catalog="touronline" type="TABLE">
+      <column name="page_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="pagecontent_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="page_id,pagecontent_id"/>
+      <foreign-key name="FK_7F9C7F46C4663E4" columns="page_id" ref-table="page" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_7F9C7F46F2D2BD3F" columns="pagecontent_id" ref-table="localecontent" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_7F9C7F46C4663E4" unique="false" columns="page_id"/>
+      <index name="IDX_7F9C7F46F2D2BD3F" unique="false" columns="pagecontent_id"/>
+    </table>
+    <table name="user" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="firstname" sqlType="VARCHAR" length="25" precision="0" nullable="false" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" length="25" precision="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" length="25" precision="0" nullable="false" jdbcType="12"/>
+      <column name="salt" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="60" precision="0" nullable="false" jdbcType="12"/>
+      <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="locked" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="resetting_password_token" sqlType="VARCHAR" length="60" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_B39617F5A76ED395" table="AccessToken" schema="" catalog="touronline" columns="user_id"/>
+      <exported-key name="FK_F1D7D177A76ED395" table="AuthCode" schema="" catalog="touronline" columns="user_id"/>
+      <exported-key name="FK_7142379EA76ED395" table="RefreshToken" schema="" catalog="touronline" columns="user_id"/>
+      <exported-key name="FK_8F02BF9DA76ED395" table="user_group" schema="" catalog="touronline" columns="user_id"/>
+      <exported-key name="FK_7CC7DA2CA76ED395" table="video" schema="" catalog="touronline" columns="user_id"/>
+      <index name="UNIQ_8D93D649E7927C74" unique="true" columns="email"/>
+      <index name="UNIQ_8D93D649F85E0677" unique="true" columns="username"/>
+    </table>
+    <table name="user_group" schema="" catalog="touronline" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,group_id"/>
+      <foreign-key name="FK_8F02BF9DA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_8F02BF9DFE54D947" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_8F02BF9DA76ED395" unique="false" columns="user_id"/>
+      <index name="IDX_8F02BF9DFE54D947" unique="false" columns="group_id"/>
+    </table>
+    <table name="video" schema="" catalog="touronline" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="filename" sqlType="VARCHAR" length="100" precision="0" nullable="false" jdbcType="12"/>
+      <column name="key_code" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="is_public" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <column name="count_played" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" length="50" precision="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="copyright" sqlType="VARCHAR" length="30" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="is_active" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="width" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="height" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="duration" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_7CC7DA2CA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="touronline" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_DA2AD38D29C1004E" table="encoder_job" schema="" catalog="touronline" columns="video_id"/>
+      <index name="UNIQ_7CC7DA2CF112EB51" unique="true" columns="key_code"/>
+      <index name="IDX_7CC7DA2CA76ED395" unique="false" columns="user_id"/>
     </table>
   </data-source>
 </component>

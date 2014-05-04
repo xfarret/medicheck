@@ -1,0 +1,8 @@
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+    medicheck.monolog.handler.doctrine:
+        class: 'Medicheck\CoreBundle\Monolog\Handler\DoctrineHandler'
+        arguments: ['@doctrine.dbal.logging_connection']
