@@ -11,7 +11,7 @@ use Serializable;
  * User
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Medicheck\UserBundle\Entity\UserRepository")
+ * @ORM\Entity()
  */
 class User implements AdvancedUserInterface, Serializable
 {
@@ -98,17 +98,17 @@ class User implements AdvancedUserInterface, Serializable
     private $isChild;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="relatedTo")
+     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\User", mappedBy="relatedTo")
      */
     private $recipients;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\ManyToMany(targetEntity="Medicheck\UserBundle\Entity\Role")
      */
     private $roles;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="recipients")
+     * @ORM\ManyToOne(targetEntity="Medicheck\UserBundle\Entity\User", inversedBy="recipients")
      * @ORM\JoinColumn(name="related_id", referencedColumnName="id")
      */
     private $relatedTo;

@@ -1,3 +1,8 @@
+#medicheck_cms:
+#    resource: "@MedicheckCmsBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+
 medicheck_core:
     resource: "@MedicheckCoreBundle/Controller/"
     type:     annotation

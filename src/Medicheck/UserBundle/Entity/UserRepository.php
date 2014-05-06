@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
-    public function __construct(EntityManager $entityManager, $userClass = 'Medicheck\UserBundle\Entity\User')
+    public function __construct(EntityManager $entityManager, $userClass = '\Medicheck\UserBundle\Entity\User')
     {
         parent::__construct($entityManager, $entityManager->getClassMetadata($userClass));
     }

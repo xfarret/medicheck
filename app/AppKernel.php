@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Medicheck\UserBundle\MedicheckUserBundle(),
             new Medicheck\CoreBundle\MedicheckCoreBundle(),
+            new Medicheck\CmsBundle\MedicheckCmsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

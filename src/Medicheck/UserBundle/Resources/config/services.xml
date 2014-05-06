@@ -13,15 +13,15 @@
     <services>
         <service id="medicheck.repository.user" class="%medicheck.repository.user.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>MedicheckUserBundle:User</argument>
+            <argument type="string">MedicheckUserBundle:User</argument>
         </service>
 
         <service id="medicheck.repository.group" class="%medicheck.repository.group.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>MedicheckUserBundle:Role</argument>
+            <argument type="string">MedicheckUserBundle:Role</argument>
         </service>
 
-        <service id="medicheck.manager.user.class" class="%medicheck.manager.user.class%">
+        <service id="medicheck.manager.user" class="%medicheck.manager.user.class%">
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="medicheck.repository.user" />
             <argument>%time_validity%</argument>

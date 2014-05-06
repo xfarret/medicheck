@@ -17,7 +17,7 @@ use Serializable;
  * Role
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Medicheck\UserBundle\Entity\RoleRepository")
+ * @ORM\Entity()
  */
 class Role implements RoleInterface, Serializable {
 
