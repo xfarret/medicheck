@@ -33,18 +33,25 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
         secured_area:
-            pattern:    ^/demo/secured/
+            pattern:    ^/
+            anonymous: ~
+            security: true
             form_login:
-                check_path: _security_check
-                login_path: _demo_login
+                provider: users
+                check_path: login_check
+                login_path: login
+                default_target_path: login
+                username_parameter: user_login[username]
+                password_parameter: user_login[password]
+
+                csrf_parameter: user_login[_csrf_token]
+                intention:      authenticate
+                csrf_provider:  form.csrf_provider
             logout:
-                path:   _demo_logout
-                target: _demo
+                invalidate_session: false
+                path:   logout
+                target: login
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

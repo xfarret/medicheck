@@ -1,0 +1,12 @@
+# User
+login.label.username: Identifiant
+login.label.password: Mot de passe
+
+# Login Form
+login.title: Identification <small>obligatoire</small>
+login.button.connect: S'identifier
+
+# Error message
+'Bad credentials': 'Informations invalides'
+'The presented password is invalid.': "Le mot de passe n'est pas valide"
+'The presented password cannot be empty.': 'Le mot de passe ne peut pas être vide'

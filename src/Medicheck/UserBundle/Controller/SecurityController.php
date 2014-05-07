@@ -2,22 +2,28 @@
 
 namespace Medicheck\UserBundle\Controller;
 
+use Medicheck\UserBundle\FormType\LoginType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 
+/**
+ * @Route("/", defaults={"_locale"="fr"}, requirements={"_locale"="fr"})
+ */
 class SecurityController extends Controller {
 
     /**
      * Pour que login soit en page d'accueil -> Route("/"), sinon Route("/login")
-     * @Route("/login", name="login")
+     * @Route("/", name="login")
      * @Method({"GET"})
      * @Template()
      */
-    public function loginAction(Request $request, $templateName)
+    public function loginAction(Request $request)
     {
+
         $session = $request->getSession();
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
@@ -29,12 +35,10 @@ class SecurityController extends Controller {
 
         $form = $this->createForm(new LoginType(), array('username' => $session->get(SecurityContext::LAST_USERNAME)));
 
-        $params = array(
+        return array(
             'error'	=> $error,
             'form' => $form->createView(),
         );
-
-        return $this->render($templateName, $params);
     }
 
     /**
