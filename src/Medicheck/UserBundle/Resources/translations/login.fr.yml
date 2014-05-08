@@ -1,6 +1,8 @@
 # User
 login.label.username: Identifiant
 login.label.password: Mot de passe
+login.placeholder.username: Numéro sécurité sociale
+login.placeholder.password: Mot de passe
 
 # Login Form
 login.title: Identification <small>obligatoire</small>
