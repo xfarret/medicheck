@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xavier
- * Date: 04/05/14
- * Time: 21:13
- */
 
 namespace Medicheck\UserBundle\Manager;
 
@@ -27,7 +21,7 @@ class UserManager
     private $passwordResettingTtl;
 
     /**
-     * @var UserRepositoryInterface
+     * @var UserRepository
      */
     private $userRepository;
 
@@ -42,16 +36,29 @@ class UserManager
         $this->passwordResettingTtl = (int) $passwordResettingTtl;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getUserById($id)
     {
         return $this->getUserRepository()->findOneBy(array('id' => $id));
     }
 
+    /**
+     * @param $username
+     * @return mixed
+     */
     public function getUserByUsername($username)
     {
         return $this->getUserRepository()->loadUserByUsername($username);
     }
 
+    /**
+     * @param User $user
+     * @return bool
+     * @throws \Medicheck\UserBundle\Exception\UpdateException
+     */
     public function updateUser(User $user)
     {
         if ($user->hasPasswordUnencoded()) {
@@ -74,11 +81,18 @@ class UserManager
         }
     }
 
+    /**
+     * @param User $user
+     */
     public function removeUser(User $user)
     {
         $this->userRepository->remove($user);
     }
 
+    /**
+     * @param User $user
+     * @return $this
+     */
     public function toggle(User $user)
     {
         $user->setIsActive(!$user->getIsActive());
@@ -88,17 +102,19 @@ class UserManager
         return $this;
     }
 
+    /**
+     * @param User $user
+     * @return bool
+     */
     public function isActive(User $user)
     {
         return $user->getIsActive();
     }
 
     /**
-     *
-     * @param User  $user
-     * @return string
-     *
-     * @throw ResettingPasswordAlreadyDoneException
+     * @param User $user
+     * @return int
+     * @throws \Medicheck\UserBundle\Exception\ResettingPasswordAlreadyDoneException
      */
     public function demandResetPassword(User $user)
     {
@@ -118,13 +134,11 @@ class UserManager
     }
 
     /**
-     *
-     * @param User      $user
-     * @param string    $secret
-     * @param string    $plainPassword
-     *
-     * @throw ResettingPasswordInvalidSecretException
-     * @throw ResettingPasswordExpiredException
+     * @param User $user
+     * @param $secret
+     * @param $plainPassword
+     * @throws \Medicheck\UserBundle\Exception\ResettingPasswordInvalidSecretException
+     * @throws \Medicheck\UserBundle\Exception\ResettingPasswordExpiredException
      */
     public function applyResetPassword(User $user, $secret, $plainPassword)
     {
@@ -144,10 +158,9 @@ class UserManager
     }
 
     /**
-     *
-     * @param \Medicheck\UserBundle\Entity\User $user
-     * @param string $passwordToValid
-     * return boolean
+     * @param User $user
+     * @param $passwordToValid
+     * @return bool
      */
     public function checkPasswordValidity(User $user, $passwordToValid) {
 

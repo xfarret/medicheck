@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Kolor\UserBundle\Exception;
+namespace Medicheck\UserBundle\Exception;
 
 /**
  * Description of ResettingPasswordExpiredException

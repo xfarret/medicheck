@@ -27,7 +27,7 @@ class User implements AdvancedUserInterface, Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="num_secu", type="string", length=255, unique=true)
+     * @ORM\Column(name="num_secu", type="string", length=15, unique=true)
      */
     private $numSecu;
 
@@ -249,6 +249,28 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
+     * Set password
+     *
+     * @param  string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPasswordUnencoded()
+    {
+        // toutes valeurs vides, false ou null sont considérées comme null
+        return ($this->passwordUnencoded != null);
+    }
+
+    /**
      * @param string $passwordUnencoded
      */
     public function setPasswordUnencoded($passwordUnencoded)
@@ -417,6 +439,19 @@ class User implements AdvancedUserInterface, Serializable
     public function getSalt()
     {
         return $this->salt;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param  string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
     }
 
     /**
