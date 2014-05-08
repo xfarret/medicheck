@@ -19,6 +19,11 @@ class RoleRepository extends EntityRepository {
         parent::__construct($entityManager, $entityManager->getClassMetadata($roleClass));
     }
 
+    public function saveOrUpdate(Role $role) {
+        $this->getEntityManager()->persist($role);
+        $this->getEntityManager()->flush();
+    }
+
     /**
      *
      */

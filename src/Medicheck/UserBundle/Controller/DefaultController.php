@@ -3,6 +3,7 @@
 namespace Medicheck\UserBundle\Controller;
 
 use Medicheck\UserBundle\Entity\User;
+use Medicheck\UserBundle\Entity\Role;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -10,10 +11,32 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/init")
+	/**
+     * @Route("/initRole")
      */
-    public function initAction()
+    public function initRoleAction()
+    {
+    	$roleRepository = $this->get('medicheck.repository.role');
+
+    	$role = new Role();
+    	$role->setName('ADMIN');
+    	$role->setRole('ROLE_ADMIN');
+        $roleRepository->saveOrUpdate($role);
+        
+        $role = new Role();
+    	$role->setName('USER');
+    	$role->setRole('ROLE_USER');
+        $roleRepository->saveOrUpdate($role);
+
+        $response = new JsonResponse();
+        $response->setData(array('roles' => 'done'));
+        return $response;
+    }
+    
+    /**
+     * @Route("/initUser")
+     */
+    public function initUserAction()
     {
         $roleRepository = $this->get('medicheck.repository.role');
         $role = $roleRepository->getRoleByName("USER");
