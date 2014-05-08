@@ -1,0 +1,24 @@
+{% extends 'MedicheckCoreBundle::base_layout.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{{ 'layout.navbar.admin'|trans({}, "admin") }}</a>
+                    <a class="navbar-brand" href="#">{{ 'layout.navbar.website'|trans({}, "admin") }}</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted('ROLE_USER') %}<li><a href="{{ url('logout') }}">{{ 'layout.navbar.logout'|trans({}, "base") }}</a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+        {% block cms_content %}{% endblock %}
+    </div>
+{% endblock %}

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xfarret
- * Date: 08/05/14
- * Time: 13:30
- */
 
 namespace Medicheck\CmsBundle\Controller;
 
@@ -28,6 +22,8 @@ class SecuredController extends Controller {
      */
     public function homePageAction(Request $request)
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
         return $this->render('MedicheckCmsBundle:Secured:homepage.html.twig', array());
     }
 } 
