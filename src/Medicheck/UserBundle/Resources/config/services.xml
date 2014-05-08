@@ -6,7 +6,7 @@
 
     <parameters>
         <parameter key="medicheck.repository.user.class">Medicheck\UserBundle\Entity\UserRepository</parameter>
-        <parameter key="medicheck.repository.group.class">Medicheck\UserBundle\Entity\GroupRepository</parameter>
+        <parameter key="medicheck.repository.role.class">Medicheck\UserBundle\Entity\RoleRepository</parameter>
         <parameter key="medicheck.manager.user.class">Medicheck\UserBundle\Manager\UserManager</parameter>
     </parameters>
 
@@ -16,7 +16,7 @@
             <argument type="string">MedicheckUserBundle:User</argument>
         </service>
 
-        <service id="medicheck.repository.group" class="%medicheck.repository.group.class%">
+        <service id="medicheck.repository.role" class="%medicheck.repository.role.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:Role</argument>
         </service>

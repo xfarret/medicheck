@@ -13,7 +13,7 @@ security:
         users:
             entity:
                 class: MedicheckUserBundle:User
-                property: username
+                property: numSecu
 #    encoders:
 #        Symfony\Component\Security\Core\User\User: plaintext
 #
@@ -41,7 +41,7 @@ security:
                 provider: users
                 check_path: login_check
                 login_path: login
-                default_target_path: login
+                default_target_path: logged_homepage
                 username_parameter: user_login[username]
                 password_parameter: user_login[password]
 

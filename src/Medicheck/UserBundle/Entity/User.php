@@ -103,6 +103,7 @@ class User implements AdvancedUserInterface, Serializable
     private $recipients;
 
     /**
+     * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="Medicheck\UserBundle\Entity\Role")
      */
     private $roles;
@@ -118,6 +119,7 @@ class User implements AdvancedUserInterface, Serializable
         $this->isChild = false;
         $this->passwordUnencoded = null;
         $this->locked = false;
+        $this->roles = new ArrayCollection();
     }
 
     /**
@@ -413,7 +415,43 @@ class User implements AdvancedUserInterface, Serializable
      */
     public function getRoles()
     {
-        return $this->roles;
+        return $this->roles->toArray();
+    }
+
+    /**
+     * Add role
+     *
+     * @param  Role $role
+     * @return User
+     */
+    public function addRole(Role $role)
+    {
+        $this->roles->add($role);
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param Role $role
+     */
+    public function removeRole(Role $role)
+    {
+        $this->$roles->removeElement($role);
+    }
+
+    public function hasRole($roleName) {
+        $result = false;
+
+        foreach ( $this->roles->toArray() as $role) {
+            if ( $role->getName() == $roleName ) {
+                $result = true;
+                break;
+            }
+        }
+
+        return $result;
     }
 
     /**

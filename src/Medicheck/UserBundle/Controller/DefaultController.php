@@ -15,6 +15,9 @@ class DefaultController extends Controller
      */
     public function initAction()
     {
+        $roleRepository = $this->get('medicheck.repository.role');
+        $role = $roleRepository->getRoleByName("USER");
+
         $user = new User();
         $user->setNumSecu("171057511211572");
         $user->setFirstname("Xavier");
@@ -22,6 +25,7 @@ class DefaultController extends Controller
         $user->setEmail("xfarret@gmail.com");
         $user->setIsActive(true);
         $user->setPasswordUnencoded("userpass");
+        $user->addRole($role);
 
         $userManager = $this->get('medicheck.manager.user');
         $userManager->updateUser($user);
