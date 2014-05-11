@@ -1,0 +1,8 @@
+register.title: Création <small>d'un compte</small>
+register.numsecu: Numéro de sécurité sociale
+register.firstname: Prénom
+register.lastname: Nom
+register.password.first: Mot de passe
+register.password.second: Confirmation mot de passe
+register.email: Adresse e-mail
+register.submit: Enregistrer

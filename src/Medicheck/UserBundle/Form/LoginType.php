@@ -6,7 +6,7 @@
  * Time: 13:00
  */
 
-namespace Medicheck\UserBundle\FormType;
+namespace Medicheck\UserBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;

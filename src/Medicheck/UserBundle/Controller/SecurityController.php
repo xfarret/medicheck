@@ -2,7 +2,7 @@
 
 namespace Medicheck\UserBundle\Controller;
 
-use Medicheck\UserBundle\FormType\LoginType;
+use Medicheck\UserBundle\Form\LoginType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

@@ -7,6 +7,7 @@ login.placeholder.password: Mot de passe
 # Login Form
 login.title: Identification <small>obligatoire</small>
 login.button.connect: S'identifier
+login.link.register: Créer mon compte
 
 # Error message
 'Bad credentials': 'Informations invalides'
