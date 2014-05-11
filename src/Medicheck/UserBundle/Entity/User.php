@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Serializable;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -529,7 +531,7 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * Unserializes the given string in the current User object
-     * @param serialized
+     * @param string
      */
     public function unserialize($serialized)
     {
@@ -538,5 +540,18 @@ class User implements AdvancedUserInterface, Serializable
             $this->roles,
             $this->id
             ) = \json_decode($serialized);
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint(
+            'numSecu',
+            new Assert\Regex(
+                array(
+                    'pattern' =>
+                    '/^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})?$/x',
+                )
+            )
+        );
     }
 }
