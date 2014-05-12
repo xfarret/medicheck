@@ -13,50 +13,52 @@
                 <h1>{{ 'register.title'|trans|raw }}</h1>
             </div>
 
-            <form action="{{ path('register') }}" method="post" {{ form_enctype(form) }}>
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <form action="{{ path('register') }}" method="post" {{ form_enctype(form) }}>
 
-                <div class="form-group">
-                    {{ form_label(form.numSecu, 'register.numsecu'|trans) }}
-                    {{ form_widget(form.numSecu, {'attr': {'class': 'form-control'} } ) }}
-                    {{ form_errors(form.numSecu) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.numSecu, 'register.numsecu'|trans) }}
+                        {{ form_widget(form.numSecu, {'attr': {'class': 'form-control'} } ) }}
+                        {{ form_errors(form.numSecu) }}
+                    </div>
 
-                <div class="form-group">
-                    {{ form_label(form.firstname, 'register.firstname'|trans) }}
-                    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
-                    {{ form_errors(form.firstname) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.firstname, 'register.firstname'|trans) }}
+                        {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
+                        {{ form_errors(form.firstname) }}
+                    </div>
 
-                <div class="form-group">
-                    {{ form_label(form.lastname, 'register.lastname'|trans) }}
-                    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
-                    {{ form_errors(form.lastname) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.lastname, 'register.lastname'|trans) }}
+                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
+                        {{ form_errors(form.lastname) }}
+                    </div>
 
-                <div class="form-group">
-                    {{ form_label(form.passwordUnencoded.first, 'register.password.first'|trans) }}
-                    {{ form_widget(form.passwordUnencoded.first, {'attr': {'class': 'form-control'} } ) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.passwordUnencoded.first, 'register.password.first'|trans) }}
+                        {{ form_widget(form.passwordUnencoded.first, {'attr': {'class': 'form-control'} } ) }}
+                    </div>
 
-                <div class="form-group">
-                    {{ form_label(form.passwordUnencoded.second, 'register.password.second'|trans) }}
-                    {{ form_widget(form.passwordUnencoded.second, {'attr': {'class': 'form-control'} } ) }}
-                    {{ form_errors(form.passwordUnencoded) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.passwordUnencoded.second, 'register.password.second'|trans) }}
+                        {{ form_widget(form.passwordUnencoded.second, {'attr': {'class': 'form-control'} } ) }}
+                        {{ form_errors(form.passwordUnencoded) }}
+                    </div>
 
-                <div class="form-group">
-                    {{ form_label(form.email, 'register.email'|trans) }}
-                    {{ form_widget(form.email, {'attr': {'class': 'form-control'} } ) }}
-                    {{ form_errors(form.email) }}
-                </div>
+                    <div class="form-group">
+                        {{ form_label(form.email, 'register.email'|trans) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'} } ) }}
+                        {{ form_errors(form.email) }}
+                    </div>
 
 
-                {{ form_rest(form) }}
+                    {{ form_rest(form) }}
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">{{ 'register.submit'|trans }}</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">{{ 'register.submit'|trans }}</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
