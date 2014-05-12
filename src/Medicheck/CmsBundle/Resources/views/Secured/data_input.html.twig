@@ -1,0 +1,27 @@
+{% extends 'MedicheckCmsBundle::base_secured_layout.html.twig' %}
+
+{% block stylesheets_header %}
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts_header %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+{% endblock %}
+
+{% block cms_content %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th data-sort="int">#</th>
+            <th data-sort="string">{{ 'data.ref'|trans({}, "data") }}</th>
+            <th data-sort="string">{{ 'data.date'|trans({}, "data") }}</th>
+            <th data-sort="string">{{ 'data.user.numsecu'|trans({}, "data") }}</th>
+            <th data-sort="int">{{ 'data.amount'|trans({}, "data") }}</th>
+            <th>{{ 'data.deductible'|trans({}, "data") }}</th>
+            <th>{{ 'data.actions'| trans({}, "data") }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+{% endblock %}

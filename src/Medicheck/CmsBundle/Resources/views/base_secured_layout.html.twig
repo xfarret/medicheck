@@ -10,12 +10,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ 'layout.navbar.admin'|trans({}, "admin") }}</a>
-                    <a class="navbar-brand" href="#">{{ 'layout.navbar.website'|trans({}, "admin") }}</a>
+                    <a class="navbar-brand" href="#">{{ 'layout.navbar.account'|trans({}, "base") }}</a>
+                    <a class="navbar-brand" href="{{ path('logged_input') }}">{{ 'layout.navbar.data'|trans({}, "base") }}</a>
+                    <a class="navbar-brand" href="#">{{ 'layout.navbar.stats'|trans({}, "base") }}</a>
                 </div>
 
                 <ul class="nav navbar-nav navbar-right">
-                    {% if is_granted('ROLE_USER') %}<li><a href="{{ url('logout') }}">{{ 'layout.navbar.logout'|trans({}, "base") }}</a></li>{% endif %}
+                    {% if is_granted('ROLE_USER') %}<li><a href="{{ path('logout') }}">{{ 'layout.navbar.logout'|trans({}, "base") }}</a></li>{% endif %}
                 </ul>
             </div>
         </div>
