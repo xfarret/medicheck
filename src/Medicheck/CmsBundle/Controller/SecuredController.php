@@ -28,13 +28,13 @@ class SecuredController extends Controller {
     }
 
     /**
-     * @Route("/datas", name="logged_input")
+     * @Route("/paiements", name="logged_input")
      * @Method({"GET"})
      */
     public function dataInputAction(Request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        return $this->render('MedicheckCmsBundle:Secured:data_input.html.twig', array('user' => $user));
+        return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig', array('user' => $user));
     }
 }

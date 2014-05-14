@@ -3,6 +3,7 @@
 namespace Medicheck\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Medicheck\UserBundle\Entity\User;
 
 /**
  * Paiement
@@ -43,19 +44,25 @@ class Paiement
     private $practitioner;
 
     /**
-     * @var integer
+     * @var decimal
      *
-     * @ORM\Column(name="cost", type="integer")
+     * @ORM\Column(name="cost", type="decimal")
      */
     private $cost;
 
     /**
-     * @var integer
+     * @var decimal
      *
-     * @ORM\Column(name="deductible", type="integer")
+     * @ORM\Column(name="deductible", type="decimal")
      */
     private $deductible;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Medicheck\UserBundle\Entity\User")
+     */
+    private $user;
 
     /**
      * Get id
@@ -139,7 +146,7 @@ class Paiement
     /**
      * Set cost
      *
-     * @param integer $cost
+     * @param decimal $cost
      * @return Paiement
      */
     public function setCost($cost)
@@ -152,7 +159,7 @@ class Paiement
     /**
      * Get cost
      *
-     * @return integer 
+     * @return decimal
      */
     public function getCost()
     {
@@ -162,7 +169,7 @@ class Paiement
     /**
      * Set deductible
      *
-     * @param integer $deductible
+     * @param decimal $deductible
      * @return Paiement
      */
     public function setDeductible($deductible)
@@ -175,10 +182,26 @@ class Paiement
     /**
      * Get deductible
      *
-     * @return integer 
+     * @return decimal
      */
     public function getDeductible()
     {
         return $this->deductible;
+    }
+
+    /**
+     * @param \Medicheck\UserBundle\Entity\User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return \Medicheck\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
