@@ -6,3 +6,5 @@ register.password.first: Mot de passe
 register.password.second: Confirmation mot de passe
 register.email: Adresse e-mail
 register.submit: Enregistrer
+register.done: Utilisateur crée avec succés !
+register.error: Erreur lors de l'enregistrement de l'utilisateur ...

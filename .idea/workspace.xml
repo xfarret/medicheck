@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c9c3d3a-3d48-416e-83c9-a92355a9c395" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/flashbag_alert.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" afterPath="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="medicheck.iws" />
@@ -25,7 +31,29 @@
     <favorites_list name="medicheck" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="flashbag_alert.html.twig" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/flashbag_alert.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="30" selection-start="59" selection-end="59" vertical-scroll-proportion="0.026354318" vertical-offset="0" max-vertical-offset="683">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="67" selection-start="313" selection-end="313" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="918">
+              <folding>
+                <element signature="e#12#54#0" expanded="true" />
+                <element signature="e#70#115#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -43,34 +71,35 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/FormType/LoginType.php" />
         <option value="$USER_HOME$/NetBeansProjects/video360/web/app.php" />
         <option value="$PROJECT_DIR$/web/app_dev.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/Role.php" />
         <option value="$PROJECT_DIR$/src/Medicheck/CoreBundle/Controller/InitController.php" />
         <option value="$PROJECT_DIR$/src/Medicheck/CmsBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/base_layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/base_layout.html.twig" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/translations/login.fr.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Form/LoginType.php" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/login.fr.yml" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml" />
-        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Account/create.html.twig" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Account/create.html.twig" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml" />
+        <option value="$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/flashbag_alert.html.twig" />
+        <option value="$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/base_layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig" />
       </list>
     </option>
   </component>
@@ -82,8 +111,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="115" />
-    <option name="y" value="48" />
+    <option name="x" value="102" />
+    <option name="y" value="27" />
     <option name="width" value="1282" />
     <option name="height" value="873" />
   </component>
@@ -113,7 +142,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -344,6 +372,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Manager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -422,7 +480,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjection" />
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -444,11 +502,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medicheck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -472,6 +582,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -569,34 +680,42 @@
       <created>1399829615116</created>
       <updated>1399829615116</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ajout du validator de numsecu">
+      <created>1399831066219</created>
+      <updated>1399831066219</updated>
+    </task>
+    <task id="LOCAL-00007" summary="les input sont dans une grid plus petite">
+      <created>1399925789321</created>
+      <updated>1399925789321</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="115" y="48" width="1282" height="873" extended-state="0" />
+    <frame x="102" y="27" width="1282" height="873" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2688889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3243243" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32297298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887077" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32945284" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29159936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3988889" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31098545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.398374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32702702" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32791328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32791328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32791328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -619,7 +738,9 @@
     <MESSAGE value="page de login réalisée + tous les éléments associés" />
     <MESSAGE value="mise en page de la page de login" />
     <MESSAGE value="design page de création de compte" />
-    <option name="LAST_COMMIT_MESSAGE" value="design page de création de compte" />
+    <MESSAGE value="ajout du validator de numsecu" />
+    <MESSAGE value="les input sont dans une grid plus petite" />
+    <option name="LAST_COMMIT_MESSAGE" value="les input sont dans une grid plus petite" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -629,40 +750,15 @@
           <line>14</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php</url>
-          <line>22</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php</url>
+          <line>42</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Form/ContactType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="11" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="7758" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="7" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="1998" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Command/HelloWorldCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Form/ContactType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="3" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1800" />
@@ -691,11 +787,6 @@
     <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Form/ContactType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="712" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -777,34 +868,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="113" selection-start="287" selection-end="504" vertical-scroll-proportion="0.054347824" vertical-offset="114" max-vertical-offset="666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="15" selection-start="283" selection-end="283" vertical-scroll-proportion="-0.15328467" vertical-offset="342" max-vertical-offset="2214" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/CoreBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="4" selection-start="282" selection-end="343" vertical-scroll-proportion="0.1704142" vertical-offset="0" max-vertical-offset="845" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bootstrap.php.cache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2035" column="0" selection-start="60455" selection-end="60455" vertical-scroll-proportion="0.18870193" vertical-offset="36473" max-vertical-offset="54990" />
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="742" selection-end="742" vertical-scroll-proportion="0.19171597" vertical-offset="126" max-vertical-offset="2772">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
@@ -825,11 +891,6 @@
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.53731346" vertical-offset="0" max-vertical-offset="469" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/base_layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="612" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/CmsBundle/Resources/views/base_secured_layout.html.twig">
@@ -857,57 +918,148 @@
         <state line="12" column="0" selection-start="434" selection-end="514" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="1044" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="28" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Account/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="40" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.33488372" vertical-offset="486" max-vertical-offset="1224" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="0" selection-start="4597" selection-end="4597" vertical-scroll-proportion="0.5620253" vertical-offset="2874" max-vertical-offset="4068" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="59" selection-start="866" selection-end="866" vertical-scroll-proportion="0.8623025" vertical-offset="50" max-vertical-offset="1080" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="442" selection-end="442" vertical-scroll-proportion="0.4604651" vertical-offset="0" max-vertical-offset="864" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="6" selection-start="2602" selection-end="2602" vertical-scroll-proportion="0.35416666" vertical-offset="639" max-vertical-offset="19800">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/FormBuilderInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="17" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-9.333333" vertical-offset="1116" max-vertical-offset="1548">
-          <folding />
-        </state>
+        <state line="83" column="17" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-9.333333" vertical-offset="1116" max-vertical-offset="1548" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="548" column="29" selection-start="11050" selection-end="11050" vertical-scroll-proportion="0.5" vertical-offset="9648" max-vertical-offset="10134">
+        <state line="548" column="29" selection-start="11050" selection-end="11050" vertical-scroll-proportion="0.5" vertical-offset="9648" max-vertical-offset="10134" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/CmsBundle/Resources/views/Secured/data_input.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="699">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/CmsBundle/Resources/views/Secured/homepage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="306" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Account/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="12" selection-start="2758" selection-end="2758" vertical-scroll-proportion="1.6119403" vertical-offset="0" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/Form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="495" column="64" selection-start="14957" selection-end="14957" vertical-scroll-proportion="-8.259259" vertical-offset="8399" max-vertical-offset="19800">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/doctrine/orm/Proxies/__CG__MedicheckUserBundleEntityRole.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="20" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.34621328" vertical-offset="604" max-vertical-offset="4734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="6" selection-start="295" selection-end="295" vertical-scroll-proportion="-4.4814816" vertical-offset="131" max-vertical-offset="2214">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/config/services.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="46" selection-start="527" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="684">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/20014ff1/bcda170c-b50b-48f2-abba-3a8d42c84bb3/medicheck..User">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="833" selection-end="833" vertical-scroll-proportion="-4.6296296" vertical-offset="181" max-vertical-offset="2772">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/translations/register.fr.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="68" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Controller/AccountController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="21" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.38251367" vertical-offset="400" max-vertical-offset="1332">
           <folding>
-            <element signature="e#47#95#0" expanded="true" />
+            <element signature="e#2010#2017#1" expanded="true" />
+            <element signature="e#2075#2121#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Form/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="9" selection-start="1456" selection-end="1456" vertical-scroll-proportion="1.4583334" vertical-offset="0" max-vertical-offset="990">
+        <state line="37" column="9" selection-start="1456" selection-end="1456" vertical-scroll-proportion="-19.333334" vertical-offset="108" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Entity/RoleRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="0" selection-start="1716" selection-end="1716" vertical-scroll-proportion="0.33144477" vertical-offset="855" max-vertical-offset="1422">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Manager/UserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="2936" selection-end="2936" vertical-scroll-proportion="0.33144477" vertical-offset="1683" max-vertical-offset="4554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bootstrap.php.cache">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2044" column="0" selection-start="60687" selection-end="60687" vertical-scroll-proportion="0.31117022" vertical-offset="36675" max-vertical-offset="54990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/UserBundle/Resources/views/Security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="67" selection-start="313" selection-end="313" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="918">
+          <folding>
+            <element signature="e#12#54#0" expanded="true" />
+            <element signature="e#70#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/base_layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="10" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.6447761" vertical-offset="0" max-vertical-offset="670">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Medicheck/CoreBundle/Resources/views/flashbag_alert.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="30" selection-start="59" selection-end="59" vertical-scroll-proportion="0.026354318" vertical-offset="0" max-vertical-offset="683">
           <folding />
         </state>
       </provider>

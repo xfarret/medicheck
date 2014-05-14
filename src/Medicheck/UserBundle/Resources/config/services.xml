@@ -24,6 +24,7 @@
         <service id="medicheck.manager.user" class="%medicheck.manager.user.class%">
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="medicheck.repository.user" />
+            <argument type="service" id="medicheck.repository.role" />
             <argument>%time_validity%</argument>
             <tag name="monolog.logger" channel="medicheck.user" />
         </service>

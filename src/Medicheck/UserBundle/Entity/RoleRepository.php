@@ -25,7 +25,7 @@ class RoleRepository extends EntityRepository {
     }
 
     /**
-     *
+     * @return array
      */
     public function getAllRoles() {
         $q = $this
@@ -37,7 +37,9 @@ class RoleRepository extends EntityRepository {
     }
 
     /**
-     *
+     * @param $value
+     * @return Role
+     * @throws \Medicheck\UserBundle\Exception\RoleNotFoundException
      */
     public function getRoleByName($value) {
         $q = $this
@@ -59,5 +61,22 @@ class RoleRepository extends EntityRepository {
         }
 
         return $role;
+    }
+
+    /**
+     * @return Role
+     */
+    public function getDefaultRoleUser() {
+        try {
+            return $this->getRoleByName("USER");
+        } catch( \Exception $e) {
+            $role = new Role();
+            $role->setName("USER");
+            $role->setRole("ROLE_USER");
+
+            $this->saveOrUpdate($role);
+
+            return $role;
+        }
     }
 } 

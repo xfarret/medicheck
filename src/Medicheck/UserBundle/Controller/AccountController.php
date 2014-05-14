@@ -37,7 +37,29 @@ class AccountController extends Controller {
         $form->remove('roles');
 
         if($request->isMethod('POST')) {
+            $form->handleRequest($request);
 
+            if( $form->isValid() ) {
+                $translator = $this->get('translator');
+                try {
+                    $emUserManager = $this->get('medicheck.manager.user');
+                    $result = $emUserManager->createUser($user);
+                } catch (\Exception $e) {
+                    $result = false;
+                }
+
+                if ( $result ) {
+                    $request->getSession()->getFlashBag()->add('info',
+                        $translator->trans('register.done', array(), 'register')
+                    );
+                } else {
+                    $request->getSession()->getFlashBag()->add('danger',
+                        $translator->trans('register.error', array(), 'register')
+                    );
+                }
+
+                return $this->redirect($this->generateUrl('login'));
+            }
         }
 
         return $this->render('MedicheckUserBundle:Account:create.html.twig', array(
