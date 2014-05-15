@@ -1,0 +1,52 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th data-sort="int">#</th>
+        <th data-sort="string">{{ 'recipient.numSecu'|trans({}, "account") }}</th>
+        <th data-sort="string">{{ 'recipient.firstname'|trans({}, "account") }}</th>
+        <th data-sort="string">{{ 'recipient.lastname'|trans({}, "account") }}</th>
+        <th>{{ 'recipient.child'|trans({}, "account") }}</th>
+        <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form name="recipients" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
+            <td></td>
+            <td class="input-group-sm">
+                {{ form_widget(form.numSecu, {'attr': {'class': 'form-control'} } ) }}
+                {{ form_errors(form.numSecu) }}
+            </td>
+
+            <td class="input-group-sm">
+                {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
+                {{ form_errors(form.firstname) }}
+            </td>
+
+            <td class="input-group-sm">
+                {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
+                {{ form_errors(form.lastname) }}
+            </td>
+
+            <td></td>
+
+            <td>
+                <button type="submit" class="btn btn-primary">{{ 'recipients.submit'|trans({}, "account") }}</button>
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+    </tr>
+    </tbody>
+</table>
