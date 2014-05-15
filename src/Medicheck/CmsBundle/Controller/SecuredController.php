@@ -2,6 +2,7 @@
 
 namespace Medicheck\CmsBundle\Controller;
 
+use Medicheck\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -36,5 +37,23 @@ class SecuredController extends Controller {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig', array('user' => $user));
+    }
+
+    /**
+     * @Route("/account", name="logged_account")
+     * @Method({"GET"})
+     */
+    public function accountAction(Request $request) {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $form = $this->createForm(new UserType(), $user);
+        $form->remove('roles');
+
+        return $this->render('MedicheckCmsBundle:Secured:account.html.twig',
+            array(
+                'form' => $form->createView(),
+                'user' => $user
+            )
+        );
     }
 }
