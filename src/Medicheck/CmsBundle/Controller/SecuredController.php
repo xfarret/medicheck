@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class ConnectedController
+ * Class SecuredController
  * @package Medicheck\CmsBundle\Controller
  *
  * @Route("/secured", defaults={"_locale"="fr"}, requirements={"_locale"="fr"})

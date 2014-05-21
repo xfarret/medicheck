@@ -1,18 +1,23 @@
 {% extends 'MedicheckCmsBundle::base_secured_layout.html.twig' %}
 
+
+{% block javascripts_header %}
+    <script src="{{ asset('bundles/medicheckcms/js/fn_account.js') }}"></script>
+{% endblock %}
+
 {% block cms_content %}
     <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
         <form name="account" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
 
             <div class="form-group row">
-                {{ form_label(form.numSecu, 'register.numsecu'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.numSecu, 'account.numsecu'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-8">
                 {{ form_widget(form.numSecu, {'attr': {'readonly': 'readonly'} } ) }}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.firstname, 'register.firstname'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.firstname, 'account.firstname'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-6">
                 {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
                     </div>
@@ -20,7 +25,7 @@
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.lastname, 'register.lastname'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.lastname, 'account.lastname'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-6">
                 {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
                 </div>
@@ -28,14 +33,14 @@
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.passwordUnencoded.first, 'register.password.first'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.passwordUnencoded.first, 'account.password.first'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-6">
                 {{ form_widget(form.passwordUnencoded.first, {'attr': {'class': 'form-control'} } ) }}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.passwordUnencoded.second, 'register.password.second'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.passwordUnencoded.second, 'account.password.second'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-6">
                 {{ form_widget(form.passwordUnencoded.second, {'attr': {'class': 'form-control'} } ) }}
                 </div>
@@ -43,7 +48,7 @@
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.email, 'register.email'|trans({}, "register"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                {{ form_label(form.email, 'account.email'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-6">
                 {{ form_widget(form.email, {'attr': {'class': 'form-control'} } ) }}
                 </div>

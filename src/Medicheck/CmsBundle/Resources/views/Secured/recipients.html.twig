@@ -1,17 +1,19 @@
+<div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
 <table class="table table-striped">
     <thead>
     <tr>
         <th data-sort="int">#</th>
-        <th data-sort="string">{{ 'recipient.numSecu'|trans({}, "account") }}</th>
-        <th data-sort="string">{{ 'recipient.firstname'|trans({}, "account") }}</th>
-        <th data-sort="string">{{ 'recipient.lastname'|trans({}, "account") }}</th>
-        <th>{{ 'recipient.child'|trans({}, "account") }}</th>
+        <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
+        <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
+        <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
+        <th>{{ 'account.child'|trans({}, "account") }}</th>
         <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <form name="recipients" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
+        <form action="{{ path('logged_add_recipient') }}" onsubmit="return addRecipient(this);" method="post" {{ form_enctype(form) }}>
+            {#action_name="{{ path('logged_account') }}"#}
             <td></td>
             <td class="input-group-sm">
                 {{ form_widget(form.numSecu, {'attr': {'class': 'form-control'} } ) }}
@@ -31,22 +33,20 @@
             <td></td>
 
             <td>
-                <button type="submit" class="btn btn-primary">{{ 'recipients.submit'|trans({}, "account") }}</button>
+                <button class="btn btn-primary">{{ 'recipient.add'|trans({}, "account") }}</button>
             </td>
         </form>
     </tr>
+    {% for recipient in user.recipients %}
     <tr>
-        <td></td>
-
-        <td></td>
-
-        <td></td>
-
-        <td></td>
-
-        <td></td>
-
+        <td>recipient.id</td>
+        <td>recipient.numSecu</td>
+        <td>recipient.firstname</td>
+        <td>recipient.lastname</td>
+        <td>recipient.isChild</td>
         <td></td>
     </tr>
+    {% endfor %}
     </tbody>
 </table>
+    </div>

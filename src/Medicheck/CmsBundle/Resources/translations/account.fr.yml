@@ -1,1 +1,9 @@
 account.submit: Enregistrer mes données personnelles
+account.numsecu: Numéro SS
+account.firstname: Prénom
+account.lastname: Nom
+account.password.first: Mot de passe
+account.password.second: Confirmation mot de passe
+account.email: Adresse e-mail
+account.child: Enfant
+recipient.add: Ajouter
