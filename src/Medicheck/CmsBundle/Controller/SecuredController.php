@@ -2,6 +2,9 @@
 
 namespace Medicheck\CmsBundle\Controller;
 
+use Medicheck\CmsBundle\Form\Account;
+use Medicheck\CmsBundle\Form\Recipient;
+use Medicheck\CmsBundle\Form\Type\AccountType;
 use Medicheck\UserBundle\Entity\User;
 use Medicheck\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,24 +50,18 @@ class SecuredController extends Controller {
     public function accountAction(Request $request) {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $form = $this->createForm(new UserType(), $user);
-        $form->remove('roles');
-
-        $recipient = new User();
-        $formRecipient = $this->createForm(new UserType(), $recipient);
-        $formRecipient->remove('passwordUnencoded');
-        $formRecipient->remove('email');
+        $form = $this->createForm(new AccountType(), $user);
 
         if($request->isMethod('POST')) {
             $form->handleRequest($request);
-            $formRecipient->handleRequest($request);
+            if ( $form->isValid() ) {
+                $data = $form->getData();
+            }
         }
 
         return $this->render('MedicheckCmsBundle:Secured:account.html.twig',
             array(
                 'form' => $form->createView(),
-                'formRecipient' => $formRecipient->createView(),
-                'user' => $user
             )
         );
     }

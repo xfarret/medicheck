@@ -1,14 +1,12 @@
 {% extends 'MedicheckCmsBundle::base_secured_layout.html.twig' %}
 
-
 {% block javascripts_header %}
     <script src="{{ asset('bundles/medicheckcms/js/fn_account.js') }}"></script>
 {% endblock %}
 
 {% block cms_content %}
-    <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
-        <form name="account" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
-
+    <form name="account" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
+        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
             <div class="form-group row">
                 {{ form_label(form.numSecu, 'account.numsecu'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
                 <div class="col-md-8">
@@ -54,16 +52,19 @@
                 </div>
                 {{ form_errors(form.email) }}
             </div>
+        </div>
 
+        <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+            {% include "MedicheckCmsBundle:Secured:recipients.html.twig" with { form: form } %}
+            {#<ul class="recipients" data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">#}
+            {#</ul>#}
+        </div>
 
-            {{ form_rest(form) }}
+        <div class="col-xs-6 col-sm-6 col-md-7 col-lg-7">
+            <button type="submit" class="btn btn-primary">{{ 'account.submit'|trans({}, "account") }}</button>
+        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">{{ 'account.submit'|trans({}, "account") }}</button>
-            </div>
-        </form>
-    </div>
-    <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
-        {% include "MedicheckCmsBundle:Secured:recipients.html.twig" with { user: user, form: formRecipient } %}
-    </div>
+        {#pour le csrf#}
+        {{ form_widget(form._token) }}
+    </form>
 {% endblock %}

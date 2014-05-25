@@ -100,7 +100,7 @@ class User implements AdvancedUserInterface, Serializable
     private $isChild;
 
     /**
-     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\User", mappedBy="relatedTo")
+     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\User", mappedBy="relatedTo", cascade="all")
      */
     private $recipients;
 
@@ -295,11 +295,15 @@ class User implements AdvancedUserInterface, Serializable
      */
     public function setRecipients($recipients)
     {
+        foreach ($recipients as $recipient) {
+            $recipient->setRelatedTo($this);
+        }
+
         $this->recipients = $recipients;
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getRecipients()
     {
@@ -307,15 +311,15 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * @param mixed $relatedTo
+     * @param User $relatedTo
      */
-    public function setRelatedTo($relatedTo)
+    public function setRelatedTo(User $relatedTo)
     {
         $this->relatedTo = $relatedTo;
     }
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getRelatedTo()
     {

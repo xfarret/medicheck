@@ -1,52 +1,39 @@
-<div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th data-sort="int">#</th>
-        <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
-        <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
-        <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
-        <th>{{ 'account.child'|trans({}, "account") }}</th>
-        <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <form action="{{ path('logged_add_recipient') }}" onsubmit="return addRecipient(this);" method="post" {{ form_enctype(form) }}>
-            {#action_name="{{ path('logged_account') }}"#}
+{% macro recipients_prototype(recipient) %}
+    {#<div>{{ form_widget(recipient.firstname) }}</div>#}
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td>{{ form_widget(recipient.numSecu) }}</td>
+            <td>{{ form_widget(recipient.firstname) }}</td>
+            <td>{{ form_widget(recipient.lastname) }}</td>
             <td></td>
-            <td class="input-group-sm">
-                {{ form_widget(form.numSecu, {'attr': {'class': 'form-control'} } ) }}
-                {{ form_errors(form.numSecu) }}
-            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endmacro %}
 
-            <td class="input-group-sm">
-                {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
-                {{ form_errors(form.firstname) }}
-            </td>
-
-            <td class="input-group-sm">
-                {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
-                {{ form_errors(form.lastname) }}
-            </td>
-
-            <td></td>
-
-            <td>
-                <button class="btn btn-primary">{{ 'recipient.add'|trans({}, "account") }}</button>
-            </td>
-        </form>
-    </tr>
-    {% for recipient in user.recipients %}
-    <tr>
-        <td>recipient.id</td>
-        <td>recipient.numSecu</td>
-        <td>recipient.firstname</td>
-        <td>recipient.lastname</td>
-        <td>recipient.isChild</td>
-        <td></td>
-    </tr>
-    {% endfor %}
-    </tbody>
+{#<ul class="recipients" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}{{ form_errors(form.recipients.vars.prototype)|e }}">#}
+<table class="recipients table table-striped" data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
+    {#<table class="table table-striped">#}
+        <thead>
+            <tr>
+                {#<th data-sort="int">#</th>#}
+                <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
+                <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
+                <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
+                {#<th>{{ 'account.child'|trans({}, "account") }}</th>#}
+                <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipient in form.recipients %}
+            <tr>
+                <td>{{ recipient.vars.value.numSecu }}</td>
+                <td>{{ recipient.vars.value.firstname }}</td>
+                <td>{{ recipient.vars.value.lastname }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    {#</table>#}
 </table>
-    </div>
