@@ -3,23 +3,21 @@ jQuery(document).ready(function() {
     var collectionHolder = jQuery('table.recipients');
 
     // ajoute un lien « add a tag »
-    var $addTagLink = jQuery('<a href="#" class="add_recipient_link">Ajouter un récipient</a>');
-    var $newLinkLi = jQuery('<li></li>').append($addTagLink);
+    var $addRecipientLink = jQuery('<a href="#" class="add_recipient_link">Ajouter un récipient</a>');
 
     // ajoute l'ancre « ajouter un tag » et li à la balise ul
-    collectionHolder.append($newLinkLi);
+    collectionHolder.append($addRecipientLink);
 
-    $addTagLink.on('click', function(e) {
+    $addRecipientLink.on('click', function(e) {
         // empêche le lien de créer un « # » dans l'URL
         e.preventDefault();
 
         // ajoute un nouveau formulaire tag (voir le prochain bloc de code)
-        addTagForm(collectionHolder, $newLinkLi);
+        addRecipientForm(collectionHolder, $addRecipientLink);
     });
 });
 
-
-function addTagForm(collectionHolder, $newLinkLi) {
+function addRecipientForm(collectionHolder, $newLinkLi) {
     // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
     var prototype = collectionHolder.attr('data-prototype');
 
@@ -31,6 +29,5 @@ function addTagForm(collectionHolder, $newLinkLi) {
     $newForm.find(':input').addClass('form-control');
 
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
-    var $newFormLi = jQuery('<li></li>').append($newForm);
-    $newLinkLi.before($newFormLi);
+    $newLinkLi.before($newForm);
 }

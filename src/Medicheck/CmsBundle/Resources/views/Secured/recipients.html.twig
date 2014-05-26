@@ -1,39 +1,32 @@
 {% macro recipients_prototype(recipient) %}
-    {#<div>{{ form_widget(recipient.firstname) }}</div>#}
-    <table class="table table-striped">
-        <tbody>
-        <tr>
-            <td>{{ form_widget(recipient.numSecu) }}</td>
-            <td>{{ form_widget(recipient.firstname) }}</td>
-            <td>{{ form_widget(recipient.lastname) }}</td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+    <tr id="new-recipient">
+        <td>{{ form_widget(recipient.numSecu) }}</td>
+        <td>{{ form_widget(recipient.firstname) }}</td>
+        <td>{{ form_widget(recipient.lastname) }}</td>
+        <td><button title="valid_new_recipient" value="Ajouter" onclick="return false;">Ajouter</button></td>
+    </tr>
 {% endmacro %}
 
 {#<ul class="recipients" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}{{ form_errors(form.recipients.vars.prototype)|e }}">#}
 <table class="recipients table table-striped" data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
-    {#<table class="table table-striped">#}
-        <thead>
-            <tr>
-                {#<th data-sort="int">#</th>#}
-                <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
-                <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
-                <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
-                {#<th>{{ 'account.child'|trans({}, "account") }}</th>#}
-                <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for recipient in form.recipients %}
-            <tr>
-                <td>{{ recipient.vars.value.numSecu }}</td>
-                <td>{{ recipient.vars.value.firstname }}</td>
-                <td>{{ recipient.vars.value.lastname }}</td>
-                <td></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    {#</table>#}
+    <thead>
+        <tr>
+            {#<th data-sort="int">#</th>#}
+            <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
+            <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
+            <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
+            {#<th>{{ 'account.child'|trans({}, "account") }}</th>#}
+            <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipient in form.recipients %}
+        <tr>
+            <td>{{ recipient.vars.value.numSecu }}</td>
+            <td>{{ recipient.vars.value.firstname }}</td>
+            <td>{{ recipient.vars.value.lastname }}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
