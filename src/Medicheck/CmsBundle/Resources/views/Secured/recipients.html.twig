@@ -3,7 +3,7 @@
         <td>{{ form_widget(recipient.numSecu) }}</td>
         <td>{{ form_widget(recipient.firstname) }}</td>
         <td>{{ form_widget(recipient.lastname) }}</td>
-        <td><button title="valid_new_recipient" value="Ajouter">Ajouter</button></td>
+        <td><button title="valid_new_recipient" value="Ajouter" onclick="addRecipientRow();return false;">Ajouter</button></td>
     </tr>
 {% endmacro %}
 
@@ -11,7 +11,6 @@
 <table class="recipients table table-striped" data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
     <thead>
         <tr>
-            {#<th data-sort="int">#</th>#}
             <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
