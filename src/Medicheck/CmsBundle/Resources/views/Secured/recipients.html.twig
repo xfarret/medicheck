@@ -3,12 +3,22 @@
         <td>{{ form_widget(recipient.numSecu) }}</td>
         <td>{{ form_widget(recipient.firstname) }}</td>
         <td>{{ form_widget(recipient.lastname) }}</td>
-        <td><button title="valid_new_recipient" value="Ajouter" onclick="addRecipientRow();return false;">Ajouter</button></td>
+        <td name="actions"><button type="submit" >Ajouter</button></td>
     </tr>
 {% endmacro %}
 
+{% macro actions_prototype(recipient) %}
+    <div class="btn-group">
+        <button type="button" class="form-control" title="edit_recipient" onclick="return false;">Editer</button>
+        <button type="button" class="form-control" title="delete_recipient" onclick="return false;">Supprimer</button>
+    </div>
+{% endmacro %}
+
 {#<ul class="recipients" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}{{ form_errors(form.recipients.vars.prototype)|e }}">#}
-<table class="recipients table table-striped" data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
+{#<table class="recipients table table-striped" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}">#}
+<table class="recipients table table-striped"
+       data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}"
+       actions-prototype="{{ _self.actions_prototype()|e }}">
     <thead>
         <tr>
             <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
@@ -24,7 +34,7 @@
             <td>{{ recipient.vars.value.numSecu }}</td>
             <td>{{ recipient.vars.value.firstname }}</td>
             <td>{{ recipient.vars.value.lastname }}</td>
-            <td></td>
+            <td>{{ _self.actions_prototype() }}</td>
         </tr>
         {% endfor %}
     </tbody>

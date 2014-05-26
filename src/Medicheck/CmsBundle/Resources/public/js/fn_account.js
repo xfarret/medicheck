@@ -35,23 +35,46 @@ function addRecipientForm(collectionHolder) {
     collectionHolder.find('tbody').append($newForm);
 }
 
+//function addRecipientRow() {
+//    var $addRecipientDom = jQuery("#new-recipient");
+//    var $newRecipient = $addRecipientDom;
+//    $newRecipient.find("td").each(function(index) {
+//        $this = jQuery( this );
+//        $input = $this.children('input:first');
+//        value = $input.val();
+//        $this.empty();
+//        $this.append(value);
+//    });
+//    $newRecipient.removeAttr('id');
+//
+//    // ajout de la nouvelle entrée
+//    collectionHolder.find('tbody').children(':last').after($addRecipientDom);
+//
+//    return false;
+//}
+
 function addRecipientRow() {
-    // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
-    var prototype = collectionHolder.attr('row-prototype');
+    var actions = collectionHolder.attr('actions-prototype');
 
     var $addRecipientDom = jQuery("#new-recipient");
     var $newRecipient = $addRecipientDom;
     $newRecipient.find("td").each(function(index) {
-        $this = jQuery( this );
-        $input = $this.children('input:first');
-        value = $input.val();
+        var $this = jQuery( this );
+        var $input = $this.children('input:first');
+        var value = $input.val();
         $this.empty();
-        $this.append(value);
+
+        var attr = $this.attr('name');
+        if (typeof attr !== 'undefined' && attr !== false) {
+            $this.append(actions);
+        } else {
+            $this.append(value);
+        }
     });
     $newRecipient.removeAttr('id');
 
     // ajout de la nouvelle entrée
     collectionHolder.find('tbody').children(':last').after($addRecipientDom);
 
-    return false;
+//    return false;
 }
