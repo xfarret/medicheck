@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Serializable;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -15,37 +14,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class User implements AdvancedUserInterface, Serializable
+class User extends BaseUser implements AdvancedUserInterface, Serializable
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="num_secu", type="string", length=15, unique=true)
      */
     private $numSecu;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="first_name", type="string", length=25)
-     */
-    private $firstname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="last_name", type="string", length=25)
-     */
-    private $lastname;
 
     /**
      * @var string
@@ -93,14 +69,7 @@ class User implements AdvancedUserInterface, Serializable
     private $resettingPasswordToken;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_child", type="boolean")
-     */
-    private $isChild;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\User", mappedBy="relatedTo", cascade="all")
+     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\Recipient", mappedBy="relatedTo", cascade="all")
      */
     private $recipients;
 
@@ -110,15 +79,10 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $roles;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Medicheck\UserBundle\Entity\User", inversedBy="recipients")
-     * @ORM\JoinColumn(name="related_id", referencedColumnName="id")
-     */
-    private $relatedTo;
+
 
     public function __construct() {
         $this->recipients = new ArrayCollection();
-        $this->isChild = false;
         $this->passwordUnencoded = null;
         $this->locked = false;
         $this->roles = new ArrayCollection();
@@ -141,38 +105,6 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * @param string $firstname
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param boolean $isActive
      */
     public function setIsActive($isActive)
@@ -186,38 +118,6 @@ class User implements AdvancedUserInterface, Serializable
     public function getIsActive()
     {
         return $this->isActive;
-    }
-
-    /**
-     * @param boolean $isChild
-     */
-    public function setIsChild($isChild)
-    {
-        $this->isChild = $isChild;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getIsChild()
-    {
-        return $this->isChild;
-    }
-
-    /**
-     * @param string $lastname
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
     }
 
     /**
@@ -308,22 +208,6 @@ class User implements AdvancedUserInterface, Serializable
     public function getRecipients()
     {
         return $this->recipients;
-    }
-
-    /**
-     * @param User $relatedTo
-     */
-    public function setRelatedTo(User $relatedTo)
-    {
-        $this->relatedTo = $relatedTo;
-    }
-
-    /**
-     * @return User
-     */
-    public function getRelatedTo()
-    {
-        return $this->relatedTo;
     }
 
     /**
@@ -528,7 +412,7 @@ class User implements AdvancedUserInterface, Serializable
             array(
                 $this->numSecu,
                 $this->roles,
-                $this->id
+                $this->getId()
             )
         );
     }
@@ -544,18 +428,5 @@ class User implements AdvancedUserInterface, Serializable
             $this->roles,
             $this->id
             ) = \json_decode($serialized);
-    }
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint(
-            'numSecu',
-            new Assert\Regex(
-                array(
-                    'pattern' =>
-                    '/^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})?$/x',
-                )
-            )
-        );
     }
 }

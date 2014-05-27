@@ -18,16 +18,16 @@ class RecipientType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('numSecu', null, array('label' => 'register.numsecu', 'required' => false))
             ->add('firstname', null, array('label' => 'register.firstname', 'required' => true))
             ->add('lastname', null, array('label' => 'register.lastname', 'required' => true))
-            ->add('numSecu', null, array('label' => 'register.numsecu', 'required' => false))
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Medicheck\UserBundle\Entity\User',
+            'data_class' => 'Medicheck\UserBundle\Entity\Recipient',
         ));
     }
 
