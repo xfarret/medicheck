@@ -24,57 +24,15 @@ function addRecipientForm(collectionHolder) {
     // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
     var prototype = collectionHolder.attr('data-prototype');
 
+    var nbChildren = collectionHolder.find('tbody').children().length;
+
     // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
     // la longueur de la collection courante
-    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+    var newForm = prototype.replace(/__name__/g, nbChildren);
     $newForm = jQuery(newForm);
     $newForm.find('div').addClass('form-group row');
     $newForm.find(':input').addClass('form-control');
 
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
     collectionHolder.find('tbody').append($newForm);
-}
-
-//function addRecipientRow() {
-//    var $addRecipientDom = jQuery("#new-recipient");
-//    var $newRecipient = $addRecipientDom;
-//    $newRecipient.find("td").each(function(index) {
-//        $this = jQuery( this );
-//        $input = $this.children('input:first');
-//        value = $input.val();
-//        $this.empty();
-//        $this.append(value);
-//    });
-//    $newRecipient.removeAttr('id');
-//
-//    // ajout de la nouvelle entrée
-//    collectionHolder.find('tbody').children(':last').after($addRecipientDom);
-//
-//    return false;
-//}
-
-function addRecipientRow() {
-    var actions = collectionHolder.attr('actions-prototype');
-
-    var $addRecipientDom = jQuery("#new-recipient");
-    var $newRecipient = $addRecipientDom;
-    $newRecipient.find("td").each(function(index) {
-        var $this = jQuery( this );
-        var $input = $this.children('input:first');
-        var value = $input.val();
-        $this.empty();
-
-        var attr = $this.attr('name');
-        if (typeof attr !== 'undefined' && attr !== false) {
-            $this.append(actions);
-        } else {
-            $this.append(value);
-        }
-    });
-    $newRecipient.removeAttr('id');
-
-    // ajout de la nouvelle entrée
-    collectionHolder.find('tbody').children(':last').after($addRecipientDom);
-
-//    return false;
 }

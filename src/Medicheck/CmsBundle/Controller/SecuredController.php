@@ -56,8 +56,7 @@ class SecuredController extends Controller {
             $form->handleRequest($request);
             if ( $form->isValid() ) {
                 $userManager = $this->get('medicheck.manager.user');
-                $user = $form->getData();
-//                $userManager->updateUser($user);
+                $userManager->updateUser($user);
             }
         }
 

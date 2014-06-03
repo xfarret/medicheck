@@ -1,39 +1,46 @@
 {% macro recipients_prototype(recipient) %}
-    <tr id="new-recipient">
+    <tr>
         <td>{{ form_widget(recipient.numSecu) }}</td>
         <td>{{ form_widget(recipient.firstname) }}</td>
         <td>{{ form_widget(recipient.lastname) }}</td>
-        <td name="actions"><button type="submit" >Ajouter</button></td>
+        <td>{{ form_widget(recipient.isChild) }}</td>
+        <td name="actions">
+            <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.delete'| trans({}, "account") }}" onclick="return false;">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
     </tr>
 {% endmacro %}
 
 {% macro actions_prototype(recipient) %}
     <div class="btn-group">
-        <button type="button" class="form-control" title="edit_recipient" onclick="return false;">Editer</button>
-        <button type="button" class="form-control" title="delete_recipient" onclick="return false;">Supprimer</button>
+        <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.edit'| trans({}, "account") }}" onclick="return false;">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.delete'| trans({}, "account") }}" onclick="return false;">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
     </div>
 {% endmacro %}
 
-{#<ul class="recipients" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}{{ form_errors(form.recipients.vars.prototype)|e }}">#}
-{#<table class="recipients table table-striped" data-prototype="{{ form_widget(form.recipients.vars.prototype)|e }}">#}
 <table class="recipients table table-striped"
-       data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}"
-       actions-prototype="{{ _self.actions_prototype()|e }}">
+       data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
     <thead>
         <tr>
             <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
-            {#<th>{{ 'account.child'|trans({}, "account") }}</th>#}
+            <th>{{ 'account.child'|trans({}, "account") }}</th>
             <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
         </tr>
     </thead>
     <tbody>
         {% for recipient in form.recipients %}
         <tr>
-            <td>{{ recipient.vars.value.numSecu }}</td>
-            <td>{{ recipient.vars.value.firstname }}</td>
-            <td>{{ recipient.vars.value.lastname }}</td>
+            <td>{{ form_widget(recipient.numSecu, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+            <td>{{ form_widget(recipient.firstname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+            <td>{{ form_widget(recipient.lastname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+            <td>{{ form_widget(recipient.isChild, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ _self.actions_prototype() }}</td>
         </tr>
         {% endfor %}

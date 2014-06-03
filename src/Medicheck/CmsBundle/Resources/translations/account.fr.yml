@@ -8,3 +8,5 @@ account.email: Adresse e-mail
 account.child: Enfant
 recipient.add: Ajouter
 recipient.actions: Actions
+btn.recipient.delete: Supprimer
+btn.recipient.edit: Editer

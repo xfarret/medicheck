@@ -9,11 +9,15 @@
 namespace Medicheck\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Recipient
  *
  * @ORM\Table()
+ * @UniqueEntity(fields={"firstname", "lastname"})
  * @ORM\Entity()
  */
 class Recipient extends BaseUser implements \Serializable {
@@ -112,5 +116,26 @@ class Recipient extends BaseUser implements \Serializable {
             $this->lastname,
             $this->id
             ) = \json_decode($serialized);
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata
+            ->addPropertyConstraint(
+                'numSecu',
+                new Assert\Regex(
+                    array(
+                        'pattern' =>
+                            '/^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})?$/x',
+                    )
+                )
+            )
+            ->addConstraint(
+                new UniqueEntity(array(
+                    'fields'  => array('firstname', 'lastname'),
+                    'message' => 'Recipient already exists.',
+                    )
+                )
+            );
     }
 }

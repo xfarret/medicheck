@@ -9,7 +9,6 @@
 namespace Medicheck\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\MappedSuperclass
@@ -23,21 +22,21 @@ abstract class BaseUser {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=25)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=25)
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @param string $firstname
@@ -87,16 +86,4 @@ abstract class BaseUser {
         return $this->lastname;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint(
-            'numSecu',
-            new Assert\Regex(
-                array(
-                    'pattern' =>
-                        '/^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})?$/x',
-                )
-            )
-        );
-    }
 } 
