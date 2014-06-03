@@ -15,6 +15,8 @@ jQuery(document).ready(function() {
         // ajoute un nouveau formulaire tag (voir le prochain bloc de code)
         addRecipientForm(collectionHolder);
     });
+
+    jQuery('.delete_recipient').on('click', removeRecipientForm);
 });
 
 var collectionHolder = null;
@@ -33,6 +35,15 @@ function addRecipientForm(collectionHolder) {
     $newForm.find('div').addClass('form-group row');
     $newForm.find(':input').addClass('form-control');
 
+    $newForm.find('.delete_recipient').on('click', removeRecipientForm);
+
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
     collectionHolder.find('tbody').append($newForm);
+}
+
+function removeRecipientForm(event) {
+    event.preventDefault();
+
+    var $row = jQuery(event.srcElement).closest('tr');
+    $row.remove();
 }

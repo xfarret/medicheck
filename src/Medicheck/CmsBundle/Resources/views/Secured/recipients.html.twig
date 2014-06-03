@@ -5,7 +5,7 @@
         <td>{{ form_widget(recipient.lastname) }}</td>
         <td>{{ form_widget(recipient.isChild) }}</td>
         <td name="actions">
-            <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.delete'| trans({}, "account") }}" onclick="return false;">
+            <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'btn.recipient.delete'| trans({}, "account") }}">
                 <span class="glyphicon glyphicon-trash"></span>
             </button>
         </td>
@@ -17,7 +17,7 @@
         <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.edit'| trans({}, "account") }}" onclick="return false;">
             <span class="glyphicon glyphicon-edit"></span>
         </button>
-        <button type="button" class="btn btn-default btn-xs" title="{{ 'btn.recipient.delete'| trans({}, "account") }}" onclick="return false;">
+        <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'btn.recipient.delete'| trans({}, "account") }}">
             <span class="glyphicon glyphicon-trash"></span>
         </button>
     </div>
