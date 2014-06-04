@@ -6,6 +6,7 @@ account.password.first: Mot de passe
 account.password.second: Confirmation mot de passe
 account.email: Adresse e-mail
 account.child: Enfant
+account.birthday: Date de naissance
 recipient.add: Ajouter
 recipient.actions: Actions
 btn.recipient.delete: Supprimer

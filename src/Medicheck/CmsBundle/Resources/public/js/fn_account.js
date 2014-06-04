@@ -52,6 +52,15 @@ function editRecipientForm(event) {
     event.preventDefault();
 
     var $row = jQuery(event.srcElement).closest('tr');
-    $row.find(':input').removeAttr('readonly');
-    $row.find(':checkbox').removeAttr('disabled');
+
+    // détermination du mode d'édition
+    if ( $row.find(':input[readonly]').length > 0 ) {
+        $row.find(':input').removeAttr('readonly');
+        $row.find(':checkbox').removeAttr('disabled');
+        $row.find('.edit_recipient').removeClass('btn-default').addClass('btn-info');
+    } else {
+        $row.find(':input').attr('readonly', 'readonly');
+        $row.find(':checkbox').attr('disabled', 'disabled');
+        $row.find('.edit_recipient').removeClass('btn-info').addClass('btn-default');
+    }
 }

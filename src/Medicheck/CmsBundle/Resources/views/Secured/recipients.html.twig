@@ -3,6 +3,7 @@
         <td>{{ form_widget(recipient.numSecu) }}</td>
         <td>{{ form_widget(recipient.firstname) }}</td>
         <td>{{ form_widget(recipient.lastname) }}</td>
+        <td>{{ form_widget(recipient.birthday) }}</td>
         <td>{{ form_widget(recipient.isChild) }}</td>
         <td name="actions">
             <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'btn.recipient.delete'| trans({}, "account") }}">
@@ -30,6 +31,7 @@
             <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.firstname'|trans({}, "account") }}</th>
             <th data-sort="string">{{ 'account.lastname'|trans({}, "account") }}</th>
+            <th data-sort="string">{{ 'account.birthday'|trans({}, "account") }}</th>
             <th>{{ 'account.child'|trans({}, "account") }}</th>
             <th>{{ 'recipient.actions'| trans({}, "account") }}</th>
         </tr>
@@ -40,6 +42,7 @@
             <td>{{ form_widget(recipient.numSecu, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.firstname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.lastname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+            <td>{{ form_widget(recipient.birthday, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.isChild, { 'attr' : {'disabled' : 'disabled'} }) }}</td>
             <td>{{ _self.actions_prototype() }}</td>
         </tr>

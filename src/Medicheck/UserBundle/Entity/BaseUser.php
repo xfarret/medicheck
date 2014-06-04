@@ -39,9 +39,9 @@ abstract class BaseUser {
     protected $lastname;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     *
+     * @ORM\Column(name="birthday", type="datetime", nullable=true)
      */
     protected $birthday;
 
@@ -92,5 +92,22 @@ abstract class BaseUser {
     {
         return $this->lastname;
     }
+
+    /**
+     * @param \DateTime $birthday
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
 
 } 

@@ -21,6 +21,7 @@ class RecipientType extends AbstractType {
             ->add('numSecu', null, array('label' => 'register.numsecu', 'required' => false))
             ->add('firstname', null, array('label' => 'register.firstname', 'required' => true))
             ->add('lastname', null, array('label' => 'register.lastname', 'required' => true))
+            ->add('birthday', 'birthday', array('label' => 'register.birthday', 'required' => false))
             ->add('isChild', 'checkbox', array('required'  => true))
         ;
     }

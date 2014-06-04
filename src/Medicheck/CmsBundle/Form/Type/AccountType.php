@@ -21,6 +21,7 @@ class AccountType extends AbstractType {
             ->add('firstname', null, array('label' => 'register.firstname', 'required' => true))
             ->add('lastname', null, array('label' => 'register.lastname', 'required' => true))
             ->add('numSecu', null, array('label' => 'register.numsecu', 'required' => true))
+            ->add('birthday', 'birthday', array('label' => 'register.birthday', 'required' => false))
             ->add('passwordUnencoded', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'register.error.password',
