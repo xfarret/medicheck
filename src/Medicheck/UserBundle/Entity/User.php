@@ -70,7 +70,7 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
     private $resettingPasswordToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\Recipient", mappedBy="relatedTo", cascade="all")
+     * @ORM\OneToMany(targetEntity="Medicheck\UserBundle\Entity\Recipient", mappedBy="relatedTo", cascade="all", orphanRemoval=true)
      */
     private $recipients;
 

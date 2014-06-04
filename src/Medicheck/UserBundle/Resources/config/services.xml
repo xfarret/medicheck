@@ -6,14 +6,21 @@
 
     <parameters>
         <parameter key="medicheck.repository.user.class">Medicheck\UserBundle\Entity\UserRepository</parameter>
+        <parameter key="medicheck.repository.recipient.class">Medicheck\UserBundle\Entity\RecipientRepository</parameter>
         <parameter key="medicheck.repository.role.class">Medicheck\UserBundle\Entity\RoleRepository</parameter>
         <parameter key="medicheck.manager.user.class">Medicheck\UserBundle\Manager\UserManager</parameter>
+        <parameter key="medicheck.manager.recipient.class">Medicheck\UserBundle\Manager\RecipientManager</parameter>
     </parameters>
 
     <services>
         <service id="medicheck.repository.user" class="%medicheck.repository.user.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:User</argument>
+        </service>
+
+        <service id="medicheck.repository.recipient" class="%medicheck.repository.recipient.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="string">MedicheckUserBundle:Recipient</argument>
         </service>
 
         <service id="medicheck.repository.role" class="%medicheck.repository.role.class%">
@@ -25,8 +32,14 @@
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="medicheck.repository.user" />
             <argument type="service" id="medicheck.repository.role" />
+            <argument type="service" id="medicheck.manager.recipient" />
             <argument>%time_validity%</argument>
             <tag name="monolog.logger" channel="medicheck.user" />
+        </service>
+
+        <service id="medicheck.manager.recipient" class="%medicheck.manager.recipient.class%">
+            <argument type="service" id="medicheck.repository.recipient" />
+            <tag name="monolog.logger" channel="medicheck.recipient" />
         </service>
     </services>
 </container>

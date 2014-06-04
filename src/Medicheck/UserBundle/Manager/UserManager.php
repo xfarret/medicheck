@@ -32,7 +32,12 @@ class UserManager
      */
     private $roleRepository;
 
-    public function __construct(EncoderFactoryInterface $encoderFactory, UserRepository $userRepository, RoleRepository $roleRepository, $passwordResettingTtl)
+    /**
+     * @var RecipientManager
+     */
+    private $recipientManager;
+
+    public function __construct(EncoderFactoryInterface $encoderFactory, UserRepository $userRepository, RoleRepository $roleRepository, RecipientManager $recipientManager, $passwordResettingTtl)
     {
         if (!is_numeric($passwordResettingTtl)) {
             throw new \InvalidArgumentException('password resetting ttl has to be a numeric');
@@ -42,6 +47,7 @@ class UserManager
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
         $this->passwordResettingTtl = (int) $passwordResettingTtl;
+        $this->recipientManager = $recipientManager;
     }
 
     /**
@@ -83,6 +89,7 @@ class UserManager
 
         try {
             $this->userRepository->save($user);
+            $this->recipientManager->removeRecipients($user);
             return true;
         } catch (\Exception $e) {
             throw new UpdateException('error.persist.user', 201, $e);

@@ -88,4 +88,4 @@ monolog:
             type:  service
             id :   medicheck.monolog.handler.doctrine
             level: info
-            channels: [medicheck.user]
+            channels: [medicheck.user, medicheck.recipient]
