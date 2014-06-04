@@ -17,6 +17,7 @@ jQuery(document).ready(function() {
     });
 
     jQuery('.delete_recipient').on('click', removeRecipientForm);
+    jQuery('.edit_recipient').on('click', editRecipientForm);
 });
 
 var collectionHolder = null;
@@ -33,7 +34,6 @@ function addRecipientForm(collectionHolder) {
     var newForm = prototype.replace(/__name__/g, nbChildren);
     $newForm = jQuery(newForm);
     $newForm.find('div').addClass('form-group row');
-    $newForm.find(':input').addClass('form-control');
 
     $newForm.find('.delete_recipient').on('click', removeRecipientForm);
 
@@ -46,4 +46,12 @@ function removeRecipientForm(event) {
 
     var $row = jQuery(event.srcElement).closest('tr');
     $row.remove();
+}
+
+function editRecipientForm(event) {
+    event.preventDefault();
+
+    var $row = jQuery(event.srcElement).closest('tr');
+    $row.find(':input').removeAttr('readonly');
+    $row.find(':checkbox').removeAttr('disabled');
 }
