@@ -39,6 +39,13 @@ abstract class BaseUser {
     protected $lastname;
 
     /**
+     * @var string
+     *
+     *
+     */
+    protected $birthday;
+
+    /**
      * @param string $firstname
      */
     public function setFirstname($firstname)
