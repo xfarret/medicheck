@@ -1,5 +1,9 @@
 {% extends 'MedicheckCmsBundle::base_secured_layout.html.twig' %}
 
+{% block stylesheets_header %}
+    <link rel="stylesheet" href="{{ asset('bundles/medicheckcms/css/account.css') }}" type="text/css" media="all" />
+{% endblock %}
+
 {% block javascripts_header %}
     <script src="{{ asset('bundles/medicheckcms/js/fn_account.js') }}"></script>
 {% endblock %}
