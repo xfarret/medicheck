@@ -9,7 +9,7 @@ use Medicheck\UserBundle\Entity\User;
  * Paiement
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Medicheck\CmsBundle\Entity\PaiementRepository")
+ * @ORM\Entity()
  */
 class Paiement
 {
@@ -23,16 +23,16 @@ class Paiement
     private $id;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="create_at", type="integer")
+     * @ORM\Column(name="create_at", type="datetime")
      */
     private $createAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="act", type="string", length=125)
+     * @ORM\Column(name="act", type="string", length=255)
      */
     private $act;
 
@@ -77,10 +77,10 @@ class Paiement
     /**
      * Set createAt
      *
-     * @param integer $createAt
+     * @param \DateTime $createAt
      * @return Paiement
      */
-    public function setCreateAt($createAt)
+    public function setCreateAt(\DateTime $createAt)
     {
         $this->createAt = $createAt;
 
@@ -90,7 +90,7 @@ class Paiement
     /**
      * Get createAt
      *
-     * @return integer 
+     * @return \DateTime
      */
     public function getCreateAt()
     {

@@ -2,9 +2,11 @@
 
 namespace Medicheck\CmsBundle\Controller;
 
+use Medicheck\CmsBundle\Entity\Paiement;
 use Medicheck\CmsBundle\Form\Account;
 use Medicheck\CmsBundle\Form\Recipient;
 use Medicheck\CmsBundle\Form\Type\AccountType;
+use Medicheck\CmsBundle\Form\Type\PaiementType;
 use Medicheck\UserBundle\Entity\User;
 use Medicheck\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,7 +42,14 @@ class SecuredController extends Controller {
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig', array('user' => $user));
+        $paiementManager = $this->get('medicheck.manager.paiement');
+        $paiements = $paiementManager->getRepository()->getPaiements($user);
+
+        $form = $this->createForm(new PaiementType());
+
+        return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig',
+            array('form' => $form->createView(), 'paiements' => $paiements, 'user' => $user)
+        );
     }
 
     /**
