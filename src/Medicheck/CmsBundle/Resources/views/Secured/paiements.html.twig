@@ -1,5 +1,9 @@
 {% extends 'MedicheckCmsBundle::base_secured_layout.html.twig' %}
 
+{% block javascripts_header %}
+    <script src="{{ asset('bundles/medicheckcms/js/fn_editable-cell.js') }}"></script>
+{% endblock %}
+
 {% macro recipients_prototype(recipient) %}
     <tr>
         <td>{{ form_widget(paiement.createAt) }}</td>
@@ -15,7 +19,18 @@
     </tr>
 {% endmacro %}
 
-{% macro actions_prototype(recipient) %}
+{% macro actions_insert_prototype(recipient) %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs valid_paiement" title="{{ 'btn.paiement.insert'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-xs delete_paiement" title="{{ 'btn.paiement.delete'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+{% endmacro %}
+
+{% macro actions_edit_prototype(recipient) %}
     <div class="btn-group">
         <button type="button" class="btn btn-default btn-xs edit_paiement" title="{{ 'btn.paiement.edit'| trans({}, "paiements") }}">
         <span class="glyphicon glyphicon-edit"></span>
@@ -41,6 +56,24 @@
         </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>{{ form_widget(form.createAt) }}</td>
+                <td>{{ form_widget(form.act) }}</td>
+                <td>{{ form_widget(form.practitioner) }}</td>
+                <td></td>
+                <td>{{ form_widget(form.cost) }}</td>
+                <td>{{ form_widget(form.deductible) }}</td>
+                <td>{{ _self.actions_insert_prototype() }}</td>
+            </tr>
+            <tr>
+                <td>06/05/2014</td>
+                <td>Soin divers</td>
+                <td>Moulin</td>
+                <td></td>
+                <td>23.00</td>
+                <td>0.50</td>
+                <td>{{ _self.actions_insert_prototype() }}</td>
+            </tr>
         {% for paiement in paiements %}
             <tr>
                 <td>{{ form_widget(paiement.createAt, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
@@ -48,7 +81,7 @@
                 <td>{{ form_widget(paiement.practitioner, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
                 <td>{{ form_widget(paiement.cost, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
                 <td>{{ form_widget(paiement.deductible, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
-                <td>{{ _self.actions_prototype() }}</td>
+                <td>{{ _self.actions_edit_prototype() }}</td>
             </tr>
         {% endfor %}
         </tbody>
