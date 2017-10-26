@@ -10,30 +10,48 @@ namespace Medicheck\CmsBundle\Form\Type;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecipientType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numSecu', null, array('label' => 'register.numsecu', 'required' => false))
-            ->add('firstname', null, array('label' => 'register.firstname', 'required' => true))
-            ->add('lastname', null, array('label' => 'register.lastname', 'required' => true))
-            ->add('birthday', 'birthday', array('label' => 'register.birthday', 'required' => false))
-            ->add('isChild', 'checkbox', array('required'  => true))
+            ->add('numSecu', TextType::class, [
+                'label'                 => 'register.numsecu',
+                'required'              => false,
+            ])
+            ->add('firstname', TextType::class, [
+                'label'                 => 'register.firstname',
+                'required'              => true,
+            ])
+            ->add('lastname', TextType::class, [
+                'label'                 => 'register.lastname',
+                'required'              => true,
+            ])
+            ->add('birthday', BirthdayType::class, [
+                'label'                 => 'register.birthday',
+                'required'              => false,
+            ])
+            ->add('isChild', CheckboxType::class, [
+                'required'              => true
+            ])
         ;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Medicheck\UserBundle\Entity\Recipient',
-        ));
+        $resolver->setDefaults([
+            'data_class'                => 'Medicheck\UserBundle\Entity\Recipient',
+            'translation_domain'        => 'account'
+        ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'medicheck_recipient';
     }

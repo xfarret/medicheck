@@ -1,10 +1,13 @@
-register.title: Création <small>d'un compte</small>
-register.numsecu: Numéro de sécurité sociale
-register.firstname: Prénom
-register.lastname: Nom
-register.password.first: Mot de passe
-register.password.second: Confirmation mot de passe
-register.email: Adresse e-mail
-register.submit: Enregistrer
-register.done: Utilisateur crée avec succés !
-register.error: Erreur lors de l'enregistrement de l'utilisateur ...
+register:
+    title: Création <small>d'un compte</small>
+    numsecu: Numéro de sécurité sociale
+    firstname: Prénom
+    lastname: Nom
+    password:
+        first: Mot de passe
+        second: Confirmation mot de passe
+    email: Adresse e-mail
+    birthday: Date de naissance
+    submit: Enregistrer
+    done: Utilisateur crée avec succés !
+    error: Erreur lors de l'enregistrement de l'utilisateur ...

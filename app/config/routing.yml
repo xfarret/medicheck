@@ -1,3 +1,7 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 medicheck_cms:
     resource: "@MedicheckCmsBundle/Controller/"
     type:     annotation
@@ -12,4 +16,3 @@ medicheck_user:
     resource: "@MedicheckUserBundle/Controller/"
     type:     annotation
     prefix:   /
-

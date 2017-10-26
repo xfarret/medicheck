@@ -1,7 +1,14 @@
-paiements.date: Date
-paiements.act: Acte
-paiements.practitioner: Praticien
-paiements.user: Bénéficiaire
-paiements.amount: Montant
-paiements.deductible: Franchise
-paiements.actions: Actions
+paiements:
+    date: 'Date'
+    act: 'Acte'
+    practitioner: 'Praticien'
+    user: 'Bénéficiaire'
+    amount: 'Montant'
+    deductible: 'Franchise'
+    actions: 'Actions'
+    placeholder:
+        date_format: 'jj/mm/aaaa'
+        money: '0.00'
+    btn:
+        insert: Ajouter
+        delete: Supprimer

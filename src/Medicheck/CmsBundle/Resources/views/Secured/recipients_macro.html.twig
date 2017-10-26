@@ -1,0 +1,27 @@
+{% trans_default_domain "account" %}
+
+{% macro recipients_prototype(recipient) %}
+    <tr>
+        <td>{{ form_widget(recipient.numSecu) }}</td>
+        <td>{{ form_widget(recipient.firstname) }}</td>
+        <td>{{ form_widget(recipient.lastname) }}</td>
+        <td>{{ form_widget(recipient.birthday) }}</td>
+        <td>{{ form_widget(recipient.isChild) }}</td>
+        <td name="actions">
+            <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'recipient.btn.delete'| trans({}, "account") }}">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+{% endmacro %}
+
+{% macro actions_prototype(recipient) %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs edit_recipient" title="{{ 'recipient.btn.edit'| trans({}, "account") }}">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'recipient.btn.delete'| trans({}, "account") }}">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+{% endmacro %}

@@ -13,32 +13,32 @@
     </parameters>
 
     <services>
-        <service id="medicheck.repository.user" class="%medicheck.repository.user.class%">
+        <service id="Medicheck\UserBundle\Entity\UserRepository" class="%medicheck.repository.user.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:User</argument>
         </service>
 
-        <service id="medicheck.repository.recipient" class="%medicheck.repository.recipient.class%">
+        <service id="Medicheck\UserBundle\Entity\RecipientRepository" class="%medicheck.repository.recipient.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:Recipient</argument>
         </service>
 
-        <service id="medicheck.repository.role" class="%medicheck.repository.role.class%">
+        <service id="Medicheck\UserBundle\Entity\RoleRepository" class="%medicheck.repository.role.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:Role</argument>
         </service>
 
         <service id="medicheck.manager.user" class="%medicheck.manager.user.class%">
             <argument type="service" id="security.encoder_factory" />
-            <argument type="service" id="medicheck.repository.user" />
-            <argument type="service" id="medicheck.repository.role" />
+            <argument type="service" id="Medicheck\UserBundle\Entity\UserRepository" />
+            <argument type="service" id="Medicheck\UserBundle\Entity\RoleRepository" />
             <argument type="service" id="medicheck.manager.recipient" />
             <argument>%time_validity%</argument>
             <tag name="monolog.logger" channel="medicheck.user" />
         </service>
 
         <service id="medicheck.manager.recipient" class="%medicheck.manager.recipient.class%">
-            <argument type="service" id="medicheck.repository.recipient" />
+            <argument type="service" id="Medicheck\UserBundle\Entity\RecipientRepository" />
             <tag name="monolog.logger" channel="medicheck.recipient" />
         </service>
     </services>

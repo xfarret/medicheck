@@ -4,6 +4,7 @@ namespace Medicheck\CmsBundle\Controller;
 
 use Medicheck\CmsBundle\Entity\Paiement;
 use Medicheck\CmsBundle\Form\Account;
+use Medicheck\CmsBundle\Form\Model\PaiementModel;
 use Medicheck\CmsBundle\Form\Recipient;
 use Medicheck\CmsBundle\Form\Type\AccountType;
 use Medicheck\CmsBundle\Form\Type\PaiementType;
@@ -19,7 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Class SecuredController
  * @package Medicheck\CmsBundle\Controller
  *
- * @Route("/secured", defaults={"_locale"="fr"}, requirements={"_locale"="fr"})
+ * @Route("/__secured__")
  */
 class SecuredController extends Controller {
 
@@ -29,7 +30,7 @@ class SecuredController extends Controller {
      */
     public function homePageAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         return $this->render('MedicheckCmsBundle:Secured:homepage.html.twig', array('user' => $user));
     }
@@ -40,16 +41,20 @@ class SecuredController extends Controller {
      */
     public function dataInputAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $paiementManager = $this->get('medicheck.manager.paiement');
         $paiements = $paiementManager->getRepository()->getPaiements($user);
 
-        $form = $this->createForm(new PaiementType());
+        $form = $this->createForm(PaiementType::class, new PaiementModel(), array());
 
-        return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig',
-            array('form' => $form->createView(), 'paiements' => $paiements, 'user' => $user)
+        $params = array(
+            'form'      => $form->createView(),
+            'paiements' => $paiements,
+            'user'      => $user
         );
+
+        return $this->render('MedicheckCmsBundle:Secured:paiements.html.twig', $params);
     }
 
     /**
@@ -57,9 +62,9 @@ class SecuredController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function accountAction(Request $request) {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $form = $this->createForm(new AccountType(), $user);
+        $form = $this->createForm(AccountType::class, $user, array());
 
         if($request->isMethod('POST')) {
             $form->handleRequest($request);

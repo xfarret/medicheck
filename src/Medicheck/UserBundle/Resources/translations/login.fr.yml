@@ -1,13 +1,12 @@
-# User
-login.label.username: Identifiant
-login.label.password: Mot de passe
-login.placeholder.username: Numéro sécurité sociale
-login.placeholder.password: Mot de passe
-
-# Login Form
-login.title: Identification <small>obligatoire</small>
-login.button.connect: S'identifier
-login.link.register: Créer mon compte
+login:
+    title: Identification <small>obligatoire</small>
+    button.connect: S'identifier
+    link.register: Créer mon compte
+    username: Identifiant
+    password: Mot de passe
+    placeholder:
+        username: Numéro sécurité sociale
+        password: Mot de passe
 
 # Error message
 'Bad credentials': 'Informations invalides'

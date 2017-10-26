@@ -2,43 +2,43 @@
 
 namespace Medicheck\UserBundle\Controller;
 
-use Medicheck\UserBundle\Form\LoginType;
+use Medicheck\UserBundle\Form\Type\LoginType;
+use Medicheck\UserBundle\Form\Model\LoginModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * @Route("/", defaults={"_locale"="fr"}, requirements={"_locale"="fr"})
+ * @Route("/")
  */
 class SecurityController extends Controller {
 
     /**
      * Pour que login soit en page d'accueil -> Route("/"), sinon Route("/login")
-     * @Route("/", name="login")
+     * @Route("/login", name="login")
      * @Method({"GET"})
-     * @Template()
      */
-    public function loginAction(Request $request)
+    public function loginAction(Request $request, AuthenticationUtils $authUtils)
     {
-
-        $session = $request->getSession();
         // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        }
+        $error = $authUtils->getLastAuthenticationError();
 
-        $form = $this->createForm(new LoginType(), array('username' => $session->get(SecurityContext::LAST_USERNAME)));
+        // last username entered by the user
+        $lastUsername = $authUtils->getLastUsername();
 
-        return array(
-            'error'	=> $error,
-            'form' => $form->createView(),
+        $loginModel = new LoginModel();
+        $loginModel->setUsername($lastUsername);
+
+        $form = $this->createForm(LoginType::class, $loginModel, array());
+
+        $params = array(
+            'error' => $error,
+            'form'  => $form->createView()
         );
+
+        return $this->render('@MedicheckUser/Security/login.html.twig', $params);
     }
 
     /**
@@ -46,7 +46,7 @@ class SecurityController extends Controller {
      */
     public function checkAction()
     {
-        throw new RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
+        throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
     /**
@@ -54,6 +54,6 @@ class SecurityController extends Controller {
      */
     public function logoutAction()
     {
-        throw new RuntimeException('You must activate the logout in your security firewall configuration.');
+        throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }
 } 

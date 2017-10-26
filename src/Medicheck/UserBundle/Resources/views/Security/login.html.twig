@@ -4,43 +4,30 @@
 {% trans_default_domain "login" %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-2 col-sm-2 col-md-3 col-lg-3"></div>
-            <div class="col-xs-8 col-sm-5 col-md-4 col-lg-4">
-                {# Gestion des FlashBag #}
-                {{ alert.show_flashbag() }}
-                <div class="page-header">
-                    <h1>{{ 'login.title'|trans({}, "login")|raw }}</h1>
-                </div>
-                {% if error %}
-                    <div class="alert alert-warning">{{ error.message }}</div>
-                {% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-3 col-lg-3"></div>
+        <div class="col-xs-8 col-sm-5 col-md-4 col-lg-4">
+            {# Gestion des FlashBag #}
+            {{ alert.show_flashbag() }}
+            <div class="page-header">
+                <h1>{{ 'login.title'|trans({}, "login")|raw }}</h1>
+            </div>
+            {% if error %}
+                <div class="alert alert-warning">{{ error.message }}</div>
+            {% endif %}
 
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <form action="{{ path('login_check') }}" method="post">
-                        <div class="form-group">
-                            <label for="username">{{ 'login.label.username'|trans({}, "login") }}</label>
-                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'login.placeholder.username'|trans({}, "login")  }}) }}
-                            {{ form_errors(form.username) }}
-                        </div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                {{ form_start(form, {'action': path('login_check'), 'method': "POST"}) }}
+                {{ form_widget(form) }}
+                {{ form_rest(form) }}
 
-                        <div class="form-group">
-                            <label for="password">{{ 'login.label.password'|trans({}, "login") }}</label>
-                            {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'login.placeholder.password'|trans({}, "login") }}) }}
-                            {{ form_errors(form.password) }}
-                        </div>
-
-                        {{ form_rest(form) }}
-
-                        <button type="submit" class="btn btn-primary">{{ 'login.button.connect'|trans({}, "login") }}</button>
-                    </form>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <a href="{{ path('register') }}">{{ 'login.link.register'|trans({}, "login") }}</a>
-                </div>
+                <button type="submit" class="btn btn-primary">{{ 'login.button.connect'|trans({}, "login") }}</button>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                <a href="{{ path('register') }}">{{ 'login.link.register'|trans({}, "login") }}</a>
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}

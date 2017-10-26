@@ -24,13 +24,13 @@
     </parameters>
 
     <services>
-        <service id="medicheck.repository.paiement" class="%medicheck.repository.paiement.class%">
+        <service id="Medicheck\CmsBundle\Entity\PaiementRepository" class="%medicheck.repository.paiement.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckCmsBundle:Paiement</argument>
         </service>
 
         <service id="medicheck.manager.paiement" class="%medicheck.manager.paiement.class%">
-            <argument type="service" id="medicheck.repository.paiement" />
+            <argument type="service" id="Medicheck\CmsBundle\Entity\PaiementRepository" />
         </service>
     </services>
 </container>

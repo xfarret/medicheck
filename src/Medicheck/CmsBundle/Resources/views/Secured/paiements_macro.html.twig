@@ -1,0 +1,36 @@
+{% macro recipients_prototype(recipient) %}
+    <tr>
+        <td>{{ form_widget(paiement.createAt) }}</td>
+        <td>{{ form_widget(paiement.act) }}</td>
+        <td>{{ form_widget(paiement.practitioner) }}</td>
+        <td>{{ form_widget(paiement.cost) }}</td>
+        <td>{{ form_widget(paiement.deductible) }}</td>
+        <td name="actions">
+            <button type="button" class="btn btn-default btn-xs delete_paiement" title="{{ 'paiements.btn.delete'| trans({}, "paiements") }}">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+{% endmacro %}
+
+{% macro actions_insert_prototype(recipient) %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs valid_paiement" title="{{ 'paiements.btn.insert'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-xs delete_paiement" title="{{ 'paiements.btn.delete'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+{% endmacro %}
+
+{% macro actions_edit_prototype(recipient) %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs edit_paiement" title="{{ 'paiements.btn.insert'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-xs delete_paiement" title="{{ 'paiements.btn.delete'| trans({}, "paiements") }}">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+{% endmacro %}

@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function initRoleAction()
     {
-    	$roleRepository = $this->get('medicheck.repository.role');
+    	$roleRepository = $this->get('Medicheck\UserBundle\Entity\RoleRepository');
 
     	$role = new Role();
     	$role->setName('ADMIN');
@@ -38,7 +38,7 @@ class DefaultController extends Controller
      */
     public function initUserAction()
     {
-        $roleRepository = $this->get('medicheck.repository.role');
+        $roleRepository = $this->get('Medicheck\UserBundle\Entity\RoleRepository');
         $role = $roleRepository->getRoleByName("USER");
 
         $user = new User();

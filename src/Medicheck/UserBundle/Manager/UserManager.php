@@ -10,6 +10,7 @@ use Medicheck\UserBundle\Entity\UserRepository;
 use Medicheck\UserBundle\Exception\ResettingPasswordExpiredException;
 use Medicheck\UserBundle\Exception\ResettingPasswordInvalidSecretException;
 use Medicheck\UserBundle\Exception\ResettingPasswordAlreadyDoneException;
+use Medicheck\UserBundle\Form\Model\RegisterUserModel;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class UserManager
@@ -56,7 +57,7 @@ class UserManager
      */
     public function getUserById($id)
     {
-        return $this->getUserRepository()->findOneBy(array('id' => $id));
+        return $this->userRepository->findOneBy(array('id' => $id));
     }
 
     /**
@@ -65,7 +66,7 @@ class UserManager
      */
     public function getUserByUsername($username)
     {
-        return $this->getUserRepository()->loadUserByUsername($username);
+        return $this->userRepository->loadUserByUsername($username);
     }
 
     /**
@@ -97,15 +98,21 @@ class UserManager
     }
 
     /**
-     * @param User $user
+     * @param RegisterUserModel $registerUser
      * @param Role $role
      * @return bool
      */
-    public function createUser(User $user, Role $role = null) {
+    public function createUser(RegisterUserModel $registerUser, Role $role = null) {
         if ( $role == null ) {
             $role = $this->roleRepository->getDefaultRoleUser();
         }
 
+        $user = new User();
+        $user->setNumSecu($registerUser->getNumsecu());
+        $user->setFirstname($registerUser->getFirstname());
+        $user->setLastname($registerUser->getLastname());
+        $user->setEmail($registerUser->getEmail());
+        $user->setPasswordUnencoded($registerUser->getPasswordUnencoded());
         $user->setIsActive(true);
         $user->setLocked(false);
         $user->addRole($role);
@@ -133,7 +140,7 @@ class UserManager
     {
         $user->setIsActive(!$user->getIsActive());
 
-        $this->getUserRepository()->save($user);
+        $this->userRepository->save($user);
 
         return $this;
     }
@@ -234,29 +241,13 @@ class UserManager
      */
     private function isPasswordResettingExpired($token)
     {
-        $ttl = $this->getPasswordResettingTtl();
+        $ttl = $this->passwordResettingTtl;
 
         if (!is_numeric($token)) {
             throw new \InvalidArgumentException('token has to be a numeric');
         }
 
         return ((int) $token + $ttl < time());
-    }
-
-    /**
-     * @return integer
-     */
-    private function getPasswordResettingTtl()
-    {
-        return $this->passwordResettingTtl;
-    }
-
-    /**
-     * @return UserRepositoryInterface
-     */
-    private function getUserRepository()
-    {
-        return $this->userRepository;
     }
 
 }

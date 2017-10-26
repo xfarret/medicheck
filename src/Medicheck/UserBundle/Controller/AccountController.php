@@ -10,12 +10,11 @@ namespace Medicheck\UserBundle\Controller;
 
 use Medicheck\UserBundle\Entity\User;
 use Medicheck\UserBundle\Entity\Role;
-use Medicheck\UserBundle\Form\UserType;
+use Medicheck\UserBundle\Form\Model\RegisterUserModel;
+use Medicheck\UserBundle\Form\Type\RegisterUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -28,13 +27,9 @@ class AccountController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function createAccountAction(Request $request) {
-        $user = new User();
-        $user->setNumSecu("");
-        $user->setLastname("");
-        $user->setFirstname("");
-
-        $form = $this->createForm(new UserType(), $user);
-        $form->remove('roles');
+        $user = new RegisterUserModel();
+        $form = $this->createForm(RegisterUserType::class, $user, array());
+//        $form->remove('roles');
 
         if($request->isMethod('POST')) {
             $form->handleRequest($request);

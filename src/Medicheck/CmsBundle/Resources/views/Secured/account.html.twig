@@ -9,57 +9,58 @@
 {% endblock %}
 
 {% block cms_content %}
-    <form name="account" action="{{ path('logged_account') }}" method="post" {{ form_enctype(form) }}>
-        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
+<div class="row">
+    <form name="account" action="{{ path('logged_account') }}" method="post">
+        <div class="col-md-4">
             <div class="form-group row">
-                {{ form_label(form.numSecu, 'account.numsecu'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-8">
+                {{ form_label(form.numSecu, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.numSecu, {'attr': {'readonly': 'readonly'} } ) }}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.firstname, 'account.firstname'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.firstname, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
-                    </div>
+                </div>
                 {{ form_errors(form.firstname) }}
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.lastname, 'account.lastname'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.lastname, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
                 </div>
                 {{ form_errors(form.lastname) }}
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.birthday, 'account.birthday'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.birthday, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                     {{ form_widget(form.birthday, {'attr': {'class': 'form-control'} } ) }}
                 </div>
                 {{ form_errors(form.birthday) }}
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.passwordUnencoded.first, 'account.password.first'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.passwordUnencoded.first, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.passwordUnencoded.first, {'attr': {'class': 'form-control'} } ) }}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.passwordUnencoded.second, 'account.password.second'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.passwordUnencoded.second, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.passwordUnencoded.second, {'attr': {'class': 'form-control'} } ) }}
                 </div>
                 {{ form_errors(form.passwordUnencoded) }}
             </div>
 
             <div class="form-group row">
-                {{ form_label(form.email, 'account.email'|trans({}, "account"), { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
-                <div class="col-md-6">
+                {{ form_label(form.email, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
                 {{ form_widget(form.email, {'attr': {'class': 'form-control'} } ) }}
                 </div>
                 {{ form_errors(form.email) }}
@@ -77,4 +78,5 @@
         {#pour le csrf#}
         {{ form_widget(form._token) }}
     </form>
+</div>
 {% endblock %}

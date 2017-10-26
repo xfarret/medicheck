@@ -1,25 +1,25 @@
 {% extends 'MedicheckCoreBundle::base_layout.html.twig' %}
 
 {% block content %}
+<div class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
-        <div class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ path('logged_account') }}">{{ 'layout.navbar.account'|trans({}, "base") }}</a>
-                    <a class="navbar-brand" href="{{ path('logged_input') }}">{{ 'layout.navbar.data'|trans({}, "base") }}</a>
-                    <a class="navbar-brand" href="#">{{ 'layout.navbar.stats'|trans({}, "base") }}</a>
-                </div>
-
-                <ul class="nav navbar-nav navbar-right">
-                    {% if is_granted('ROLE_USER') %}<li><a href="{{ path('logout') }}">{{ 'layout.navbar.logout'|trans({}, "base") }}</a></li>{% endif %}
-                </ul>
-            </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('logged_account') }}">{{ 'layout.navbar.account'|trans({}, "base") }}</a>
+            <a class="navbar-brand" href="{{ path('logged_input') }}">{{ 'layout.navbar.data'|trans({}, "base") }}</a>
+            <a class="navbar-brand" href="#">{{ 'layout.navbar.stats'|trans({}, "base") }}</a>
         </div>
-        {% block cms_content %}{% endblock %}
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if is_granted('ROLE_USER') %}<li><a href="{{ path('logout') }}">{{ 'layout.navbar.logout'|trans({}, "base") }}</a></li>{% endif %}
+        </ul>
     </div>
+</div>
+<div class="container-fluid">
+{% block cms_content %}{% endblock %}
+</div>
 {% endblock %}

@@ -1,3 +1,28 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+#security:
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+#    providers:
+#        in_memory:
+#            memory: ~
+
+#    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+
+#        main:
+#            anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+
 security:
     encoders:
         Medicheck\UserBundle\Entity\User:
@@ -44,10 +69,10 @@ security:
                 default_target_path: logged_homepage
                 username_parameter: user_login[username]
                 password_parameter: user_login[password]
-
                 csrf_parameter: user_login[_csrf_token]
-                intention:      authenticate
-                csrf_provider:  form.csrf_provider
+                #csrf_token_generator: security.csrf.token_manager
+                #intention:      authenticate
+                #csrf_provider:  form.csrf_provider
             logout:
                 invalidate_session: false
                 path:   logout

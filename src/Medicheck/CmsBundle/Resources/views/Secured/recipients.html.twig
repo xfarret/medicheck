@@ -1,31 +1,7 @@
-{% macro recipients_prototype(recipient) %}
-    <tr>
-        <td>{{ form_widget(recipient.numSecu) }}</td>
-        <td>{{ form_widget(recipient.firstname) }}</td>
-        <td>{{ form_widget(recipient.lastname) }}</td>
-        <td>{{ form_widget(recipient.birthday) }}</td>
-        <td>{{ form_widget(recipient.isChild) }}</td>
-        <td name="actions">
-            <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'btn.recipient.delete'| trans({}, "account") }}">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>
-        </td>
-    </tr>
-{% endmacro %}
-
-{% macro actions_prototype(recipient) %}
-    <div class="btn-group">
-        <button type="button" class="btn btn-default btn-xs edit_recipient" title="{{ 'btn.recipient.edit'| trans({}, "account") }}">
-            <span class="glyphicon glyphicon-edit"></span>
-        </button>
-        <button type="button" class="btn btn-default btn-xs delete_recipient" title="{{ 'btn.recipient.delete'| trans({}, "account") }}">
-            <span class="glyphicon glyphicon-trash"></span>
-        </button>
-    </div>
-{% endmacro %}
+{% import "@MedicheckCms/Secured/recipients_macro.html.twig" as macro %}
 
 <table class="recipients table table-striped"
-       data-prototype="{{ _self.recipients_prototype(form.recipients.vars.prototype)|e }}">
+       data-prototype="{{ macro.recipients_prototype(form.recipients.vars.prototype)|e }}">
     <thead>
         <tr>
             <th data-sort="string">{{ 'account.numsecu'|trans({}, "account") }}</th>
@@ -44,7 +20,7 @@
             <td>{{ form_widget(recipient.lastname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.birthday, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.isChild, { 'attr' : {'disabled' : 'disabled'} }) }}</td>
-            <td>{{ _self.actions_prototype() }}</td>
+            <td>{{ macro.actions_prototype() }}</td>
         </tr>
         {% endfor %}
     </tbody>
