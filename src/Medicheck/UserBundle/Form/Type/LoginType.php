@@ -27,6 +27,8 @@ class LoginType extends AbstractType {
                 'translation_domain'    => 'login',
                 'attr'                  => [
                     'placeholder'               => 'login.placeholder.username',
+                    'class'                     => 'form-control',
+                    'autofocus'                 => 'autofocus'
                 ]
             ])
             ->add('password', PasswordType::class, [
@@ -35,6 +37,7 @@ class LoginType extends AbstractType {
                 'translation_domain'    => 'login',
                 'attr'                  => [
                     'placeholder'               => 'login.placeholder.password',
+                    'class'                     => 'form-control'
                 ]
             ]);
     }

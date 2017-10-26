@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block cms_content %}
-<div class="row">
-    <form name="account" action="{{ path('logged_account') }}" method="post">
+<form name="account" action="{{ path('logged_account') }}" method="post">
+    <div class="row">
         <div class="col-md-4">
             <div class="form-group row">
                 {{ form_label(form.numSecu, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
@@ -67,16 +67,18 @@
             </div>
         </div>
 
-        <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+        <div class="col-md-8">
             {% include "MedicheckCmsBundle:Secured:recipients.html.twig" with { form: form } %}
         </div>
+    </div>
 
-        <div class="col-xs-6 col-sm-6 col-md-7 col-lg-7">
+    <div class="row">
+        <div class="col-md-4">
             <button type="submit" class="btn btn-primary">{{ 'account.submit'|trans({}, "account") }}</button>
         </div>
+    </div>
 
-        {#pour le csrf#}
-        {{ form_widget(form._token) }}
-    </form>
-</div>
+    {#pour le csrf#}
+    {{ form_widget(form._token) }}
+</form>
 {% endblock %}
