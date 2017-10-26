@@ -16,7 +16,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
             new Medicheck\UserBundle\MedicheckUserBundle(),
             new Medicheck\CoreBundle\MedicheckCoreBundle(),
             new Medicheck\CmsBundle\MedicheckCmsBundle()

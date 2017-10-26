@@ -1,7 +1,3 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
-
 medicheck_cms:
     resource: "@MedicheckCmsBundle/Controller/"
     type:     annotation

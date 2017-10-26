@@ -3,19 +3,15 @@ app/bootstrap*
 
 # Symfony directories
 vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
+var/cache/*
+var/logs/dev.log
+var/logs/prod.log
+var/sessions/dev
+var/sessions/prod
 web/bundles/*
 
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
 
-# Composer
-composer.phar
-
 .idea/*
-*.iml
-*.iws
-workspace.xml
