@@ -24,6 +24,8 @@
     </parameters>
 
     <services>
+        <defaults public="true" />
+
         <service id="Medicheck\CmsBundle\Entity\PaiementRepository" class="%medicheck.repository.paiement.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckCmsBundle:Paiement</argument>

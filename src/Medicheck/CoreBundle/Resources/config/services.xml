@@ -9,6 +9,8 @@
     </parameters>
 
     <services>
+        <defaults public="true" />
+
         <service id="core.mailer" class="%core.mailer.class%">
             <argument type="service" id="mailer" />
             <argument>%mailer_from%</argument>

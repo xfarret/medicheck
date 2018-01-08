@@ -13,6 +13,8 @@
     </parameters>
 
     <services>
+        <defaults public="true" />
+
         <service id="Medicheck\UserBundle\Entity\UserRepository" class="%medicheck.repository.user.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="string">MedicheckUserBundle:User</argument>

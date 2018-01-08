@@ -62,6 +62,15 @@ security:
             pattern:    ^/
             anonymous: ~
             security: true
+            logout_on_user_change: true
+#            simple_form:
+#                authenticator: Medicheck\UserBundle\Security\UserAuthenticator
+#                check_path:    login_check
+#                login_path:    login
+#                default_target_path: logged_homepage
+#                username_parameter: user_login[username]
+#                password_parameter: user_login[password]
+#                csrf_parameter: user_login[_csrf_token]
             form_login:
                 provider: users
                 check_path: login_check
@@ -82,5 +91,5 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/secured, roles: ROLE_USER, requires_channel: http }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/__secured__, roles: ROLE_USER, requires_channel: http }

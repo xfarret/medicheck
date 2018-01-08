@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Serializable;
+use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
@@ -15,7 +17,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class User extends BaseUser implements AdvancedUserInterface, Serializable
+class User extends BaseUser implements AdvancedUserInterface, Serializable, EquatableInterface
 {
     /**
      * @var string
@@ -329,7 +331,7 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
      */
     public function removeRole(UserRole $role)
     {
-        $this->$roles->removeElement($role);
+        $this->roles->removeElement($role);
     }
 
     public function hasRole($roleName) {
@@ -442,5 +444,22 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
                 )
             )
         );
+    }
+
+    public function isEqualTo(UserInterface $user)
+    {
+//        if ($this->password !== $user->getPassword()) {
+//            return false;
+//        }
+//
+//        if ($this->salt !== $user->getSalt()) {
+//            return false;
+//        }
+
+        if ($this->numSecu !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
     }
 }
