@@ -19,6 +19,7 @@ email:
     reset:
         email:
             title: Demande de modification de mot de passe
+            sent: Un email vous a été envoyé.
 
 
 # Error message

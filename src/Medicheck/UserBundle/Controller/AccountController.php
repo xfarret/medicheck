@@ -13,7 +13,6 @@ use Medicheck\UserBundle\Form\Type\RegisterUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -92,7 +91,7 @@ class AccountController extends Controller {
                     '@MedicheckCore/Emails/email_reset_password.html.twig',
                     '@MedicheckCore/Emails/email_reset_password.txt.twig',
                     array(
-                        'link_reset'    => $this->generateUrl(
+                        'link_reset'    => "http:" . $this->generateUrl(
                             'reset_password',
                             array('email' => $email),
                             UrlGeneratorInterface::NETWORK_PATH
@@ -100,8 +99,8 @@ class AccountController extends Controller {
                     )
                 );
                 return $this->render('@MedicheckUser/Account/lost_password.html.twig', array(
-                    'form'      => $form->createView(),
-                    'confirm'   => true
+                    'form'              => $form->createView(),
+                    'password_sent'     => true
                 ));
             }
         }
