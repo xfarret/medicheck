@@ -2,7 +2,7 @@
 
 namespace Medicheck\UserBundle\Manager;
 
-use Medicheck\UserBundle\Entity\Role;
+use Medicheck\UserBundle\Entity\UserRole;
 use Medicheck\UserBundle\Entity\RoleRepository;
 use Medicheck\UserBundle\Entity\User;
 use Medicheck\UserBundle\Exception\UpdateException;
@@ -99,10 +99,10 @@ class UserManager
 
     /**
      * @param RegisterUserModel $registerUser
-     * @param Role $role
+     * @param UserRole $role
      * @return bool
      */
-    public function createUser(RegisterUserModel $registerUser, Role $role = null) {
+    public function createUser(RegisterUserModel $registerUser, UserRole $role = null) {
         if ( $role == null ) {
             $role = $this->roleRepository->getDefaultRoleUser();
         }
@@ -220,19 +220,19 @@ class UserManager
         return false;
     }
 
-    /**
-     * Create empty active user
-     *
-     * @return User
-     */
-    public function createEmptyActiveUser()
-    {
-        $user = $this->createEmptyUser();
-        $user->setIsActive(true);
-        $user->setPasswordUnencoded(uniqid('pwd'));
-
-        return $user;
-    }
+//    /**
+//     * Create empty active user
+//     *
+//     * @return User
+//     */
+//    public function createEmptyActiveUser()
+//    {
+//        $user = $this->createEmptyUser();
+//        $user->setIsActive(true);
+//        $user->setPasswordUnencoded(uniqid('pwd'));
+//
+//        return $user;
+//    }
 
     /**
      * @param integer   $token

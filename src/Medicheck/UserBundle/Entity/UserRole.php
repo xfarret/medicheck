@@ -9,7 +9,8 @@
 namespace Medicheck\UserBundle\Entity;
 
 
-use Symfony\Component\Security\Core\Role\RoleInterface;
+use Symfony\Component\Security\Core\Role\Role;
+//use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 
@@ -19,7 +20,15 @@ use Serializable;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class Role implements RoleInterface, Serializable {
+class UserRole  extends Role implements Serializable {
+//    implements
+//} RoleInterface, Serializable {
+
+    public function __construct($role)
+    {
+        parent::__construct($role);
+        $this->role = $role;
+    }
 
     /**
      * @var integer
@@ -83,18 +92,18 @@ class Role implements RoleInterface, Serializable {
         return $this->name;
     }
 
-    /**
-     * Set role
-     *
-     * @param  string $role
-     * @return Role
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
+//    /**
+//     * Set role
+//     *
+//     * @param  string $role
+//     * @return Role
+//     */
+//    public function setRole($role)
+//    {
+//        $this->role = $role;
+//
+//        return $this;
+//    }
 
     /**
      * Serializes the content of the current Group object

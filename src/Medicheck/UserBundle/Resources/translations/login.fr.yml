@@ -2,11 +2,24 @@ login:
     title: Identification <small>obligatoire</small>
     button.connect: S'identifier
     link.register: Créer mon compte
+    link.forget_password: J'ai oublié mon mot de passe
     username: Identifiant
     password: Mot de passe
+    email: e-mail
+    send.email: Envoyer la demande
     placeholder:
         username: Numéro sécurité sociale
         password: Mot de passe
+
+email:
+    title: Oubli <small>mot de passe</small>
+    label: e-Mail
+    button:
+        send: Envoyer la demande
+    reset:
+        email:
+            title: Demande de modification de mot de passe
+
 
 # Error message
 'Bad credentials': 'Informations invalides'

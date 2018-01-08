@@ -3,10 +3,9 @@
 namespace Medicheck\UserBundle\Controller;
 
 use Medicheck\UserBundle\Entity\User;
-use Medicheck\UserBundle\Entity\Role;
+use Medicheck\UserBundle\Entity\UserRole;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
@@ -18,14 +17,12 @@ class DefaultController extends Controller
     {
     	$roleRepository = $this->get('Medicheck\UserBundle\Entity\RoleRepository');
 
-    	$role = new Role();
+    	$role = new UserRole('ROLE_ADMIN');
     	$role->setName('ADMIN');
-    	$role->setRole('ROLE_ADMIN');
         $roleRepository->saveOrUpdate($role);
         
-        $role = new Role();
+        $role = new UserRole('ROLE_USER');
     	$role->setName('USER');
-    	$role->setRole('ROLE_USER');
         $roleRepository->saveOrUpdate($role);
 
         $response = new JsonResponse();
@@ -42,10 +39,10 @@ class DefaultController extends Controller
         $role = $roleRepository->getRoleByName("USER");
 
         $user = new User();
-        $user->setNumSecu("171057511211572");
+        $user->setNumSecu("123");
         $user->setFirstname("Xavier");
         $user->setLastname("Farret");
-        $user->setEmail("xfarret@gmail.com");
+        $user->setEmail("xfarret@medicheck.fr");
         $user->setIsActive(true);
         $user->setPasswordUnencoded("userpass");
         $user->addRole($role);

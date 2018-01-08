@@ -15,11 +15,14 @@ use Medicheck\UserBundle\Exception\RoleNotFoundException;
 
 class RoleRepository extends EntityRepository {
 
-    public function __construct(EntityManager $entityManager, $roleClass = 'Medicheck\UserBundle\Entity\Role') {
+    public function __construct(EntityManager $entityManager, $roleClass = 'Medicheck\UserBundle\Entity\UserRole') {
         parent::__construct($entityManager, $entityManager->getClassMetadata($roleClass));
     }
 
-    public function saveOrUpdate(Role $role) {
+    /**
+     * @param UserRole $role
+     */
+    public function saveOrUpdate(UserRole $role) {
         $this->getEntityManager()->persist($role);
         $this->getEntityManager()->flush();
     }
@@ -38,7 +41,7 @@ class RoleRepository extends EntityRepository {
 
     /**
      * @param $value
-     * @return Role
+     * @return UserRole
      * @throws \Medicheck\UserBundle\Exception\RoleNotFoundException
      */
     public function getRoleByName($value) {
@@ -55,7 +58,7 @@ class RoleRepository extends EntityRepository {
             $role = $q->getSingleResult();
         } catch (NoResultException $e) {
             throw new RoleNotFoundException(
-                sprintf('Unable to find MedicheckUserBundle:Role object identified by "%s".', $value),
+                sprintf('Unable to find MedicheckUserBundle:UserRole object identified by "%s".', $value),
                 0, $e
             );
         }
@@ -64,15 +67,14 @@ class RoleRepository extends EntityRepository {
     }
 
     /**
-     * @return Role
+     * @return UserRole
      */
     public function getDefaultRoleUser() {
         try {
             return $this->getRoleByName("USER");
         } catch( \Exception $e) {
-            $role = new Role();
+            $role = new UserRole("ROLE_USER");
             $role->setName("USER");
-            $role->setRole("ROLE_USER");
 
             $this->saveOrUpdate($role);
 

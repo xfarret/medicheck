@@ -76,7 +76,7 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Medicheck\UserBundle\Entity\Role")
+     * @ORM\ManyToMany(targetEntity="Medicheck\UserBundle\Entity\UserRole")
      */
     private $roles;
 
@@ -302,7 +302,7 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
      * and populated in any number of different ways when the user object
      * is created.
      *
-     * @return Role[] The user roles
+     * @return UserRole[] The user roles
      */
     public function getRoles()
     {
@@ -312,10 +312,10 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
     /**
      * Add role
      *
-     * @param  Role $role
+     * @param  UserRole $role
      * @return User
      */
-    public function addRole(Role $role)
+    public function addRole(UserRole $role)
     {
         $this->roles->add($role);
 
@@ -325,9 +325,9 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable
     /**
      * Remove role
      *
-     * @param Role $role
+     * @param UserRole $role
      */
-    public function removeRole(Role $role)
+    public function removeRole(UserRole $role)
     {
         $this->$roles->removeElement($role);
     }

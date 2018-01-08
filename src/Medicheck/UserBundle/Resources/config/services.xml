@@ -25,7 +25,7 @@
 
         <service id="Medicheck\UserBundle\Entity\RoleRepository" class="%medicheck.repository.role.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="string">MedicheckUserBundle:Role</argument>
+            <argument type="string">MedicheckUserBundle:UserRole</argument>
         </service>
 
         <service id="medicheck.manager.user" class="%medicheck.manager.user.class%">
