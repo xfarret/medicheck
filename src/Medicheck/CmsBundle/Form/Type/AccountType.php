@@ -39,6 +39,7 @@ class AccountType extends AbstractType {
             ->add('birthday', BirthdayType::class, [
                 'label'                 => 'account.birthday',
                 'required'              => false,
+                'format'                => 'dd MMMM yyyy'
             ])
             ->add('passwordUnencoded', RepeatedType::class, [
                 'type'                  => PasswordType::class,
