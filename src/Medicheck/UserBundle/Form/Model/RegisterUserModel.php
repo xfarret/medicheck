@@ -8,6 +8,8 @@
 
 namespace Medicheck\UserBundle\Form\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class RegisterUserModel
 {
@@ -97,5 +99,17 @@ class RegisterUserModel
         $this->email = $email;
     }
 
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint(
+            'numsecu',
+            new Assert\Regex(
+                array(
+                    'pattern' =>
+                        '/^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})?$/x',
+                )
+            )
+        );
+    }
 
 }
