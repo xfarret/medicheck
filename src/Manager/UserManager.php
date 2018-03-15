@@ -8,6 +8,7 @@ use App\Exception\ResettingPasswordAlreadyDoneException;
 use App\Exception\ResettingPasswordExpiredException;
 use App\Exception\ResettingPasswordInvalidSecretException;
 use App\Exception\UpdateException;
+use App\Form\Model\RegisterUserModel;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
@@ -98,8 +99,10 @@ class UserManager
 
     /**
      * @param RegisterUserModel $registerUser
-     * @param UserRole $role
+     * @param UserRole|null $role
      * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function createUser(RegisterUserModel $registerUser, UserRole $role = null) {
         if ( $role == null ) {
