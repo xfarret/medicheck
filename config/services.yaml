@@ -1,0 +1,99 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'fr'
+    time_validity: 600
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    medicheck.repository.user:
+        class: App\Repository\UserRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - App:User
+
+    medicheck.repository.recipient:
+        class: App\Repository\RecipientRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - App:Recipient
+
+    medicheck.repository.role:
+        class: App\Repository\RoleRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - App:UserRole
+
+    medicheck.repository.paiement:
+        class: App\Repository\PaiementRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - App:Paiement
+
+    medicheck.manager.user:
+        class: App\Manager\UserManager
+        autowire: true
+        public: true
+        tags:
+            - { name: monolog.logger, channel: medicheck.user }
+        arguments:
+            - '@security.encoder_factory'
+            - '@medicheck.repository.user'
+            - '@medicheck.repository.role'
+            - '@medicheck.manager.recipient'
+            - '%time_validity%'
+
+    medicheck.manager.recipient:
+        class: App\Manager\RecipientManager
+        autowire: true
+        public: true
+        tags:
+            - { name: monolog.logger, channel: medicheck.recipient }
+        arguments:
+            - '@medicheck.repository.recipient'
+
+    medicheck.manager.paiement:
+        class: App\Manager\PaiementManager
+        autowire: true
+        public: true
+        arguments:
+            - '@medicheck.repository.paiement'
+
+    core.mailer:
+        class: App\Mail\Mailer
+        autowire: true
+        public: true
+        arguments:
+            - '@mailer'
+            - '%env(mailer_from)%'
+            - '@templating'
+            - '@translator'

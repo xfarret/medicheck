@@ -1,0 +1,55 @@
+{% extends 'base_secured_layout.html.twig' %}
+
+{% import "Secured/paiements_macro.html.twig" as macro %}
+
+{% block javascripts_header %}
+    <script src="{{ asset('js/fn_editable-cell.js') }}"></script>
+{% endblock %}
+
+{% block cms_content %}
+    <table class="paiements table table-striped">
+           {#data-prototype="{{ _self.paiements_prototype(form)|e }}">#}
+        <thead>
+        <tr>
+            <th data-sort="string">{{ 'paiements.date'|trans({}, "paiements") }}</th>
+            <th data-sort="string">{{ 'paiements.act'|trans({}, "paiements") }}</th>
+            <th data-sort="string">{{ 'paiements.practitioner'|trans({}, "paiements") }}</th>
+            <th data-sort="string">{{ 'paiements.user'|trans({}, "paiements") }}</th>
+            <th data-sort="int">{{ 'paiements.amount'|trans({}, "paiements") }}</th>
+            <th>{{ 'paiements.deductible'|trans({}, "paiements") }}</th>
+            <th>{{ 'paiements.actions'| trans({}, "paiements") }}</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ form_widget(form.createAt) }}</td>
+                <td>{{ form_widget(form.act) }}</td>
+                <td>{{ form_widget(form.practitioner) }}</td>
+                <td>{{ user.numSecu }}</td>
+                <td>{{ form_widget(form.cost) }}</td>
+                <td>{{ form_widget(form.deductible) }}</td>
+                <td>{{ macro.actions_insert_prototype() }}</td>
+            </tr>
+            {#<tr>#}
+                {#<td>06/05/2014</td>#}
+                {#<td>Soin divers</td>#}
+                {#<td>Moulin</td>#}
+                {#<td></td>#}
+                {#<td>23.00</td>#}
+                {#<td>0.50</td>#}
+                {#<td>{{ _self.actions_insert_prototype() }}</td>#}
+            {#</tr>#}
+        {% for paiement in paiements %}
+            <tr>
+                <td>{{ form_widget(paiement.createAt, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+                <td>{{ form_widget(paiement.act, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+                <td>{{ form_widget(paiement.practitioner, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+                <td>{{ user.numSecu }}</td>
+                <td>{{ form_widget(paiement.cost, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+                <td>{{ form_widget(paiement.deductible, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
+                <td>{{ macro.actions_edit_prototype() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

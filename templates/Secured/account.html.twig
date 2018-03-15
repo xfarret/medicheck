@@ -1,0 +1,84 @@
+{% extends 'base_secured_layout.html.twig' %}
+
+{% block stylesheets_header %}
+    <link rel="stylesheet" href="{{ asset('css/account.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block javascripts_header %}
+    <script src="{{ asset('js/fn_account.js') }}"></script>
+{% endblock %}
+
+{% block cms_content %}
+<form name="account" action="{{ path('logged_account') }}" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group row">
+                {{ form_label(form.numSecu, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.numSecu, {'attr': {'readonly': 'readonly'} } ) }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.firstname, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.firstname, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+                {{ form_errors(form.firstname) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.lastname, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.lastname, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+                {{ form_errors(form.lastname) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.birthday, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                    {{ form_widget(form.birthday, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+                {{ form_errors(form.birthday) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.passwordUnencoded.first, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.passwordUnencoded.first, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.passwordUnencoded.second, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.passwordUnencoded.second, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+                {{ form_errors(form.passwordUnencoded) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.email, '', { 'label_attr': {'class': 'col-md-4 control-label'} } ) }}
+                <div class="col-md-7">
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'} } ) }}
+                </div>
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            {% include "Secured/recipients.html.twig" with { form: form } %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">{{ 'account.submit'|trans({}, "account") }}</button>
+        </div>
+    </div>
+
+    {#pour le csrf#}
+    {{ form_widget(form._token) }}
+</form>
+{% endblock %}
