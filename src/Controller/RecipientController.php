@@ -9,12 +9,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\Type\RecipientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -30,14 +28,14 @@ class RecipientController extends Controller {
      * @Method({"POST"})
      */
     public function addRecipientAction(Request $request) {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $recipient = new User();
-        $formRecipient = $this->createForm(new UserType(), $recipient);
-        $formRecipient->remove('passwordUnencoded');
-        $formRecipient->remove('email');
+        $formRecipient = $this->createForm(new RecipientType(), $recipient);
+//        $formRecipient->remove('passwordUnencoded');
+//        $formRecipient->remove('email');
 
-        return $this->renderView('MedicheckCmsBundle:Secured:recipients.html.twig',
+        return $this->renderView('Secured/recipients.html.twig',
             array(
                 'formRecipient' => $formRecipient->createView(),
                 'user' => $user

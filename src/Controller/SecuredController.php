@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Paiement;
+use App\Entity\User;
 use App\Form\Account;
 use App\Form\Model\PaiementModel;
 use App\Form\Recipient;
@@ -71,6 +72,8 @@ class SecuredController extends Controller {
                 $userManager = $this->get('medicheck.manager.user');
                 $userManager->updateUser($user);
             }
+
+            return $this->redirect($this->generateUrl('logged_account'));
         }
 
         return $this->render('Secured/account.html.twig',

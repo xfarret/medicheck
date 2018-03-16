@@ -90,7 +90,6 @@ class UserManager
 
         try {
             $this->userRepository->save($user);
-            $this->recipientManager->removeRecipients($user);
             return true;
         } catch (\Exception $e) {
             throw new UpdateException('error.persist.user', 201, $e);

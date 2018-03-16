@@ -36,9 +36,10 @@ class RecipientType extends AbstractType {
             ->add('birthday', BirthdayType::class, [
                 'label'                 => 'register.birthday',
                 'required'              => false,
+                'format'                => 'dd MMMM yyyy'
             ])
             ->add('isChild', CheckboxType::class, [
-                'required'              => true
+                'required'              => false
             ])
         ;
     }

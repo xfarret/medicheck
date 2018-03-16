@@ -19,7 +19,7 @@
             <td>{{ form_widget(recipient.firstname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.lastname, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ form_widget(recipient.birthday, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
-            <td>{{ form_widget(recipient.isChild, { 'attr' : {'disabled' : 'disabled'} }) }}</td>
+            <td>{{ form_widget(recipient.isChild, { 'attr' : {'readonly' : 'readonly'} }) }}</td>
             <td>{{ macro.actions_prototype() }}</td>
         </tr>
         {% endfor %}

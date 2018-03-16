@@ -9,7 +9,6 @@
 namespace App\Manager;
 
 
-
 use App\Entity\User;
 use App\Repository\RecipientRepository;
 

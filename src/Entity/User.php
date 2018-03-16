@@ -72,7 +72,7 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable, Equa
     private $resettingPasswordToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Recipient", mappedBy="relatedTo", cascade="all", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Recipient", mappedBy="relatedTo", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      */
     private $recipients;
 
@@ -203,6 +203,36 @@ class User extends BaseUser implements AdvancedUserInterface, Serializable, Equa
         }
 
         $this->recipients = $recipients;
+    }
+
+    /**
+     * Fait référence à
+     * - https://symfony.com/doc/current/form/form_collections.html
+     * - https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference
+     * CollectionType by_reference=false sur RecipientType
+     * @param Recipient $recipient
+     */
+    public function addRecipient(Recipient $recipient)
+    {
+        $this->recipients->add($recipient);
+        $recipient->setRelatedTo($this);
+
+        $numSecu = $recipient->getNumSecu();
+        if ( !isset($numSecu) ) {
+            $recipient->setNumSecu($this->getNumSecu());
+        }
+    }
+
+    /**
+     * Fait référence à
+     * - https://symfony.com/doc/current/form/form_collections.html
+     * - https://symfony.com/doc/current/reference/forms/types/collection.html#by-reference
+     * CollectionType by_reference=false sur RecipientType
+     * @param Recipient $recipient
+     */
+    public function removeRecipient(Recipient $recipient)
+    {
+        $this->recipients->removeElement($recipient);
     }
 
     /**
